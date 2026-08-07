@@ -1,0 +1,1057 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Frontier Board — AI Startup Tracker, August 2026</title>
+<meta name="description" content="A live tracker of AI startups attacking genuinely unsolved problems (Skyfall, Mirendil, Oak Lab, Ineffable, Discovery Loop), the largest 2026 funding rounds month by month, and the strongest companies out of Y Combinator's 2026 batches.">
+<meta property="og:title" content="The Frontier Board — AI Startup Tracker, August 2026">
+<meta property="og:description" content="Who is working on the problems nobody has solved, where the money actually went in 2026 month by month, and what came out of YC.">
+<meta property="og:type" content="article">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>&#x1F4E1;</text></svg>">
+<style>
+  :root {
+    --bg: #0a0c10;
+    --surface: #11141a;
+    --surface-2: #161a22;
+    --ink: #e9ecf3;
+    --ink-2: #a2abbd;
+    --muted: #6d7688;
+    --line: #232833;
+    --line-soft: #1b1f27;
+    --accent: #f5a524;
+    --accent-soft: rgba(245,165,36,0.12);
+    --on-accent: #0a0c10;
+    --c-self: #f5a524;
+    --c-world: #60a5fa;
+    --c-learn: #34d399;
+    --c-arch: #c084fc;
+    --c-sci: #fb7185;
+    --pos: #34d399;
+    --warn: #fb7185;
+  }
+  :root[data-theme="light"] {
+    --bg: #f6f6f4;
+    --surface: #ffffff;
+    --surface-2: #fbfbf9;
+    --ink: #14171d;
+    --ink-2: #4b5463;
+    --muted: #7b8492;
+    --line: #e0e2df;
+    --line-soft: #ebedea;
+    --accent: #b4700a;
+    --accent-soft: rgba(180,112,10,0.10);
+    --on-accent: #ffffff;
+    --c-self: #b4700a;
+    --c-world: #1d63c4;
+    --c-learn: #0b7a55;
+    --c-arch: #7b3fc4;
+    --c-sci: #c02a4d;
+    --pos: #0b7a55;
+    --warn: #c02a4d;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { transition: none !important; animation: none !important; }
+  }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.62;
+    -webkit-font-smoothing: antialiased;
+  }
+  .mono, .eyebrow, .chip, .tag, .kicker, .num, .tick, .col-h, .src-n, .stat-l, .badge {
+    font-family: ui-monospace, "SF Mono", "Cascadia Code", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+  }
+  a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 2.5px; }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 3px; }
+
+  .shell { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+  .prose { max-width: 74ch; }
+
+  /* ── Masthead ─────────────────────────────── */
+  .masthead { background: var(--surface); border-bottom: 1px solid var(--line); padding: 44px 0 0; }
+  .mast-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; }
+  .eyebrow { font-size: 11.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin: 0 0 22px; }
+  .eyebrow b { color: var(--accent); font-weight: 500; }
+  .themebtn {
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 11.5px; letter-spacing: 0.06em; color: var(--ink-2); background: var(--bg);
+    border: 1px solid var(--line); border-radius: 999px; padding: 6px 13px; cursor: pointer;
+    white-space: nowrap; display: inline-flex; align-items: center; gap: 7px;
+  }
+  .themebtn:hover { color: var(--ink); border-color: var(--muted); }
+  h1 {
+    font-weight: 800; letter-spacing: -0.026em; line-height: 1.03;
+    font-size: clamp(36px, 5.6vw, 60px); margin: 0 0 20px; max-width: 19ch; text-wrap: balance;
+  }
+  h1 em { font-style: normal; color: var(--accent); }
+  .dek { font-size: 19px; line-height: 1.55; color: var(--ink-2); max-width: 60ch; margin: 0 0 30px; }
+  .ticker {
+    display: flex; flex-wrap: wrap; gap: 10px 30px; font-size: 12px; color: var(--ink-2);
+    letter-spacing: 0.02em; padding: 16px 0 24px; border-top: 1px solid var(--line-soft);
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-variant-numeric: tabular-nums;
+  }
+  .ticker b { color: var(--ink); font-weight: 600; }
+  .band { display: flex; height: 4px; }
+  .band span { flex: 1; }
+
+  /* ── Tabs ─────────────────────────────────── */
+  .tabwrap { position: sticky; top: 0; z-index: 40; background: var(--bg); border-bottom: 1px solid var(--line); }
+  .tabs { display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none; }
+  .tabs::-webkit-scrollbar { display: none; }
+  .tab {
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 12px; letter-spacing: 0.05em; color: var(--muted);
+    background: none; border: 0; border-bottom: 2px solid transparent;
+    padding: 15px 18px 13px; cursor: pointer; white-space: nowrap;
+  }
+  .tab:hover { color: var(--ink-2); }
+  .tab[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--accent); }
+  .tab .n { color: var(--muted); margin-right: 7px; }
+  .tab[aria-selected="true"] .n { color: var(--accent); }
+
+  /* ── Panels ───────────────────────────────── */
+  .panel { display: none; padding: 46px 0 90px; }
+  .panel.on { display: block; }
+  h2 {
+    font-size: clamp(25px, 3.4vw, 34px); font-weight: 750; letter-spacing: -0.02em;
+    line-height: 1.12; margin: 0 0 14px; text-wrap: balance;
+  }
+  h3 { font-size: 20px; font-weight: 700; letter-spacing: -0.012em; margin: 40px 0 12px; }
+  h4 { font-size: 15.5px; font-weight: 700; margin: 26px 0 8px; }
+  p { margin: 0 0 16px; }
+  .lede { font-size: 18px; color: var(--ink-2); max-width: 66ch; margin-bottom: 30px; }
+  .kicker { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin: 0 0 10px; }
+  .rule { border: 0; border-top: 1px solid var(--line); margin: 44px 0; }
+  .note { font-size: 13.5px; color: var(--muted); line-height: 1.6; }
+
+  /* ── Stat strip ───────────────────────────── */
+  .strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; margin: 0 0 38px; }
+  .strip .cell { background: var(--surface); padding: 18px 18px 16px; }
+  .strip .num { font-size: 23px; font-weight: 650; color: var(--ink); letter-spacing: -0.01em; }
+  .strip .stat-l { font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-top: 3px; }
+  @media (max-width: 780px) { .strip { grid-template-columns: repeat(2, 1fr); } }
+
+  /* ── Rubric ───────────────────────────────── */
+  .rubric { display: grid; grid-template-columns: repeat(auto-fit, minmax(192px, 1fr)); gap: 13px; margin: 26px 0 8px; }
+  .rub {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 16px 16px 15px;
+  }
+  .rub .tag { font-size: 10.5px; letter-spacing: 0.12em; color: var(--accent); display: block; margin-bottom: 8px; }
+  .rub b { display: block; font-size: 14.5px; margin-bottom: 5px; letter-spacing: -0.005em; }
+  .rub span { font-size: 13px; color: var(--ink-2); line-height: 1.5; }
+
+  /* ── Problem clusters ─────────────────────── */
+  .cluster { border: 1px solid var(--line); border-radius: 12px; background: var(--surface); margin: 0 0 22px; overflow: hidden; }
+  .cl-head { padding: 20px 22px 18px; border-bottom: 1px solid var(--line-soft); position: relative; }
+  .cl-head::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--cc, var(--accent)); }
+  .cl-head .tag { font-size: 10.5px; letter-spacing: 0.13em; text-transform: uppercase; color: var(--cc, var(--accent)); }
+  .cl-head h3 { margin: 7px 0 8px; font-size: 21px; }
+  .cl-head p { margin: 0; font-size: 14.5px; color: var(--ink-2); max-width: 74ch; }
+  .cl-head .unsolved {
+    display: inline-block; margin-top: 12px; font-size: 12.5px; color: var(--ink-2);
+    background: var(--surface-2); border: 1px solid var(--line); border-radius: 7px; padding: 9px 12px; max-width: 74ch;
+  }
+  .cl-head .unsolved b { color: var(--ink); font-weight: 650; }
+
+  table.co { width: 100%; border-collapse: collapse; font-size: 14px; }
+  table.co th {
+    text-align: left; font-family: ui-monospace, Menlo, monospace; font-size: 10.5px;
+    letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted);
+    padding: 11px 14px; border-bottom: 1px solid var(--line-soft); font-weight: 500; white-space: nowrap;
+  }
+  table.co td { padding: 13px 14px; border-bottom: 1px solid var(--line-soft); vertical-align: top; }
+  table.co tr:last-child td { border-bottom: 0; }
+  table.co tr:hover td { background: var(--surface-2); }
+  table.co .co-n { font-weight: 650; color: var(--ink); display: block; letter-spacing: -0.005em; }
+  table.co .co-w { font-size: 12.5px; color: var(--muted); display: block; margin-top: 2px; }
+  table.co .amt { font-family: ui-monospace, Menlo, monospace; font-variant-numeric: tabular-nums; white-space: nowrap; color: var(--ink); font-size: 13px; }
+  table.co .amt s { display: block; text-decoration: none; color: var(--muted); font-size: 11.5px; margin-top: 2px; }
+  table.co .why { color: var(--ink-2); font-size: 13.5px; line-height: 1.5; }
+  .tscroll { overflow-x: auto; }
+  .tscroll table.co { min-width: 620px; }
+
+  .badge { font-size: 10px; letter-spacing: 0.09em; text-transform: uppercase; padding: 2px 6px; border-radius: 4px; border: 1px solid var(--line); color: var(--muted); white-space: nowrap; }
+  .badge.new { color: var(--accent); border-color: var(--accent); }
+  .badge.und { color: var(--muted); }
+
+  /* ── Ledger (money tab) ───────────────────── */
+  .ledger { border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: var(--surface); }
+  .mo { border-bottom: 1px solid var(--line); }
+  .mo:last-child { border-bottom: 0; }
+  .mo-head {
+    display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap;
+    padding: 16px 20px 14px; background: var(--surface-2); border-bottom: 1px solid var(--line-soft);
+  }
+  .mo-head .m {
+    font-family: ui-monospace, Menlo, monospace; font-size: 13px; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--ink); font-weight: 600;
+  }
+  .mo-head .t { font-family: ui-monospace, Menlo, monospace; font-size: 12.5px; color: var(--accent); font-variant-numeric: tabular-nums; }
+  .mo-head .s { font-size: 13px; color: var(--muted); margin-left: auto; text-align: right; }
+  .rows { padding: 4px 0; }
+  .row {
+    display: grid; grid-template-columns: 1.35fr 0.85fr 1.5fr; gap: 14px;
+    padding: 10px 20px; border-bottom: 1px solid var(--line-soft); align-items: baseline;
+  }
+  .row:last-child { border-bottom: 0; }
+  .row:hover { background: var(--surface-2); }
+  .row .c { font-weight: 650; font-size: 14.5px; letter-spacing: -0.005em; }
+  .row .c s { display: block; text-decoration: none; font-weight: 400; font-size: 12px; color: var(--muted); margin-top: 1px; font-family: ui-monospace, Menlo, monospace; }
+  .row .a { font-family: ui-monospace, Menlo, monospace; font-variant-numeric: tabular-nums; font-size: 14px; color: var(--accent); font-weight: 600; }
+  .row .a s { display: block; text-decoration: none; color: var(--muted); font-size: 11.5px; font-weight: 400; margin-top: 1px; }
+  .row .d { font-size: 13px; color: var(--ink-2); line-height: 1.5; }
+  .row.hero .a { font-size: 15px; }
+  .row.hero .c { color: var(--ink); }
+  @media (max-width: 720px) {
+    .row { grid-template-columns: 1fr; gap: 3px; padding: 12px 16px; }
+    .row .a { font-size: 13px; }
+  }
+
+  /* ── Figures ──────────────────────────────── */
+  figure { margin: 30px 0 34px; padding: 22px 22px 18px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; }
+  figcaption { font-size: 13px; color: var(--muted); line-height: 1.55; margin-top: 14px; }
+  figcaption b { color: var(--ink-2); font-weight: 600; }
+  .fig-t { font-size: 15px; font-weight: 700; margin-bottom: 3px; letter-spacing: -0.008em; }
+  .fig-s { font-size: 13px; color: var(--muted); margin-bottom: 20px; }
+  svg { display: block; width: 100%; height: auto; overflow: visible; }
+  .ax { fill: var(--muted); font-family: ui-monospace, Menlo, monospace; font-size: 10px; letter-spacing: 0.06em; }
+  .val { fill: var(--ink); font-family: ui-monospace, Menlo, monospace; font-size: 11px; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .gl { stroke: var(--line); stroke-width: 1; }
+
+  .legend { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 16px; font-family: ui-monospace, Menlo, monospace; font-size: 11px; color: var(--ink-2); }
+  .legend i { width: 9px; height: 9px; border-radius: 2px; display: inline-block; margin-right: 6px; vertical-align: -1px; }
+
+  /* ── Callouts ─────────────────────────────── */
+  .call { border: 1px solid var(--line); border-left: 3px solid var(--accent); border-radius: 8px; background: var(--surface); padding: 16px 18px; margin: 24px 0; }
+  .call .kicker { margin-bottom: 6px; }
+  .call p { margin: 0 0 10px; font-size: 14.5px; color: var(--ink-2); }
+  .call p:last-child { margin-bottom: 0; }
+  .call b { color: var(--ink); }
+  .call.warn { border-left-color: var(--warn); }
+  .call.warn .kicker { color: var(--warn); }
+
+  ul.tight { margin: 0 0 18px; padding-left: 20px; }
+  ul.tight li { margin-bottom: 8px; color: var(--ink-2); font-size: 14.5px; }
+  ul.tight li b { color: var(--ink); font-weight: 650; }
+
+  /* ── Watchlist ────────────────────────────── */
+  .watch { display: grid; grid-template-columns: repeat(auto-fit, minmax(255px, 1fr)); gap: 14px; margin: 22px 0 10px; }
+  .w {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 16px 17px 15px;
+    border-top: 2px solid var(--wc, var(--accent));
+  }
+  .w .tag { font-size: 10.5px; letter-spacing: 0.11em; color: var(--wc, var(--accent)); display: block; margin-bottom: 7px; }
+  .w b { display: block; font-size: 15px; margin-bottom: 5px; letter-spacing: -0.008em; }
+  .w span { font-size: 13.5px; color: var(--ink-2); line-height: 1.5; display: block; }
+  .w em { font-style: normal; font-family: ui-monospace, Menlo, monospace; font-size: 11.5px; color: var(--muted); display: block; margin-top: 8px; }
+
+  /* ── Sources ──────────────────────────────── */
+  .srcs { columns: 2; column-gap: 34px; font-size: 13.5px; }
+  .srcs div { break-inside: avoid; margin-bottom: 10px; color: var(--ink-2); line-height: 1.5; }
+  .srcs .src-n { color: var(--muted); font-size: 11px; margin-right: 7px; }
+  @media (max-width: 720px) { .srcs { columns: 1; } }
+
+  /* ── Footer ───────────────────────────────── */
+  .foot { border-top: 1px solid var(--line); padding: 28px 0 60px; font-family: ui-monospace, Menlo, monospace; font-size: 11.5px; color: var(--muted); letter-spacing: 0.05em; line-height: 1.9; }
+  .foot a { color: var(--ink-2); }
+
+  @media (max-width: 640px) {
+    .shell { padding: 0 18px; }
+    .strip .num { font-size: 20px; }
+    figure { padding: 18px 14px 14px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══ MASTHEAD ══════════════════════════════ -->
+<header class="masthead">
+  <div class="shell">
+    <div class="mast-top">
+      <div class="eyebrow">Independent research · Tracker <b>03</b> · Compiled <b>7 August 2026</b></div>
+      <button class="themebtn" id="tbtn" type="button" aria-label="Switch colour theme"><span class="glyph" id="tglyph">◐</span><span id="tlabel">Auto</span></button>
+    </div>
+    <h1>Who is working on the problems <em>nobody has solved</em>.</h1>
+    <p class="dek">A standing tracker on three things: the labs betting against the current paradigm, where 2026's capital actually landed month by month, and what came out of Y Combinator. Startups like Skyfall and Mirendil are not building products yet — they are building arguments about what comes after the transformer.</p>
+    <div class="ticker">
+      <span><b>38</b> frontier bets tracked</span>
+      <span><b>5</b> unsolved problems</span>
+      <span><b>$510B</b> global VC, H1 2026</span>
+      <span><b>43%</b> of it to two companies</span>
+      <span><b>199</b> companies in YC W26</span>
+      <span><b>8</b> months of ledger</span>
+    </div>
+  </div>
+  <div class="band">
+    <span style="background:var(--c-self)"></span><span style="background:var(--c-world)"></span><span style="background:var(--c-learn)"></span><span style="background:var(--c-arch)"></span><span style="background:var(--c-sci)"></span>
+  </div>
+</header>
+
+<!-- ══ TABS ══════════════════════════════════ -->
+<div class="tabwrap">
+  <div class="shell">
+    <div class="tabs" role="tablist" aria-label="Sections">
+      <button class="tab" role="tab" id="t-frontier" aria-controls="p-frontier" aria-selected="true"><span class="n">01</span>The frontier board</button>
+      <button class="tab" role="tab" id="t-money" aria-controls="p-money" aria-selected="false"><span class="n">02</span>The money, month by month</button>
+      <button class="tab" role="tab" id="t-yc" aria-controls="p-yc" aria-selected="false"><span class="n">03</span>Y Combinator</button>
+      <button class="tab" role="tab" id="t-watch" aria-controls="p-watch" aria-selected="false"><span class="n">04</span>Watchlist &amp; method</button>
+    </div>
+  </div>
+</div>
+
+<main class="shell">
+
+<!-- ══ 01 · FRONTIER ═════════════════════════ -->
+<section class="panel on" id="p-frontier" role="tabpanel" aria-labelledby="t-frontier">
+  <p class="kicker">01 · The frontier board</p>
+  <h2>Five problems, thirty-eight bets</h2>
+  <p class="lede">Most AI companies pick a market. A small number pick a problem that no one has solved and then raise against the possibility that they will. This board tracks the second kind — sorted by the problem, not the company, because the problem is what tells you whether the bet is real.</p>
+
+  <div class="strip">
+    <div class="cell"><div class="num">$5.2B+</div><div class="stat-l">Raised by pre-product labs</div></div>
+    <div class="cell"><div class="num">7</div><div class="stat-l">Launched since April 2026</div></div>
+    <div class="cell"><div class="num">4</div><div class="stat-l">Turing / Nobel-tier founders</div></div>
+    <div class="cell"><div class="num">0</div><div class="stat-l">With a shipped product</div></div>
+  </div>
+
+  <h3>How to tell a frontier bet from a wrapper</h3>
+  <p class="prose" style="color:var(--ink-2);font-size:15px">Every company on this board passes at least four of these five tests. It is a useful filter in either direction: apply it to a pitch deck and the ones that fail tend to be selling distribution, not research.</p>
+  <div class="rubric">
+    <div class="rub"><span class="tag">TEST 01</span><b>Names the failure, not the market</b><span>The pitch starts with something LLMs provably cannot do — not with a TAM slide. Sutton's Oak Lab opens by calling current AI fundamentally broken.</span></div>
+    <div class="rub"><span class="tag">TEST 02</span><b>Has run the experiment before</b><span>Founders come from a lab bench, not a GTM org. The four Google researchers behind Discovery Loop shipped MapReduce, AlphaStar and seq2seq.</span></div>
+    <div class="rub"><span class="tag">TEST 03</span><b>Capital precedes product</b><span>A $1.1B seed with no product is not a red flag here — it is the compute bill for a training run that has to happen before anyone can judge the idea.</span></div>
+    <div class="rub"><span class="tag">TEST 04</span><b>Has a falsifiable milestone</b><span>A dated benchmark or a public experiment. Ineffable promised first benchmarks by late 2026. Skyfall said it will buy a company and run it.</span></div>
+    <div class="rub"><span class="tag">TEST 05</span><b>Owns its data source</b><span>General Intuition trains on action-labelled gameplay from a platform it already owns. Renting the data is a strategy; owning the faucet is a moat.</span></div>
+  </div>
+
+  <hr class="rule">
+
+  <!-- Cluster 1 -->
+  <div class="cluster" style="--cc:var(--c-self)">
+    <div class="cl-head">
+      <span class="tag">Problem 01 · Self-improving systems</span>
+      <h3>Can an AI system do AI research?</h3>
+      <p>Every frontier lab now runs some internal version of this loop — models that help design the next model. Nobody has closed it. The bet on this row is that whoever automates the researcher, rather than the coder, compounds fastest and hardest.</p>
+      <div class="unsolved"><b>Why it is still open:</b> current systems can write code and run evals, but cannot choose a research direction, notice that a result is interesting, or decide what to try next. That judgement is the entire job.</div>
+    </div>
+    <div class="tscroll"><table class="co">
+      <thead><tr><th>Company</th><th>Capital</th><th>The specific bet</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="co-n">Mirendil <span class="badge new">Aug news</span></span><span class="co-w">Ex-Anthropic · ~20 people</span></td>
+          <td class="amt">$200M seed<s>$1B val · Jun 2026<br>a16z + Kleiner, Nvidia</s></td>
+          <td class="why">Sells the autoresearch platform the big labs build for themselves and guard. Founder Behnam Neyshabur worked on AI-for-science at Google and Anthropic; his co-founder built Anthropic's first internal autoresearch system. Signed a $100M+ multi-year Google Cloud deal on 6 August — half the seed, committed to compute.</td>
+        </tr>
+        <tr>
+          <td><span class="co-n">Discovery Loop <span class="badge new">2 days old</span></span><span class="co-w">Public benefit corp</span></td>
+          <td class="amt">Undisclosed<s>Announced 5 Aug 2026<br>Google, Radical, Khosla</s></td>
+          <td class="why">Jeff Dean and Sanjay Ghemawat left Google after 27 years, with Oriol Vinyals and Quoc Le, to run thousands of scientific experiments in parallel and automate the loop around them. Google is a founding investor and the cloud partner. Dean is reported as CEO.</td>
+        </tr>
+        <tr>
+          <td><span class="co-n">Recursive Superintelligence</span><span class="co-w">Socher · Rocktäschel · ~20 people</span></td>
+          <td class="amt">~$500M pre-A<s>$4B pre-money · Apr 2026<br>GV led, Nvidia</s></td>
+          <td class="why">Raised four months after founding, before launching. Aims to automate the whole frontier pipeline — evaluation, data selection, training, post-training and research direction — with no human in the loop. Reported as oversubscribed to as much as $1B.</td>
+        </tr>
+        <tr>
+          <td><span class="co-n">Core Automation</span><span class="co-w">Ex-OpenAI VP of Research</span></td>
+          <td class="amt">$100M @ $1B<s>May 2026 · Nvidia, Spark, Accel<br>Reported raising $300–500M @ ~$4B</s></td>
+          <td class="why">Jerry Tworek led OpenAI's reasoning-model programme through 2025, then left in January. Building "the world's most automated AI lab." Flagship project <i>Ceres</i> targets a 100× reduction in training data through continual learning — an explicit rejection of scaling pretraining.</td>
+        </tr>
+        <tr>
+          <td><span class="co-n">Poetiq</span><span class="co-w">Recursive self-improvement</span></td>
+          <td class="amt">$45.8M seed<s>Jan 2026</s></td>
+          <td class="why">Smallest bet in the cluster and the least publicly documented. Included because the thesis is identical to Recursive's at a tenth of the price — a useful control on whether the capital is buying anything.</td>
+        </tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <!-- Cluster 2 -->
+  <div class="cluster" style="--cc:var(--c-world)">
+    <div class="cl-head">
+      <span class="tag">Problem 02 · World models</span>
+      <h3>Can a model predict consequences instead of tokens?</h3>
+      <p>The largest cluster and the best funded. A language model predicts the next symbol. A world model predicts the next <i>state</i> — what actually happens if you do the thing. The disagreement inside this row is about which world: physical, visual, or economic.</p>
+      <div class="unsolved"><b>Why it is still open:</b> nobody has shown a learned world model that stays accurate over long horizons, across domains it was not trained on, without drifting into nonsense. The demos are short. The claims are long.</div>
+    </div>
+    <div class="tscroll"><table class="co">
+      <thead><tr><th>Company</th><th>Capital</th><th>The specific bet</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="co-n">Skyfall AI <span class="badge new">Jul launch</span></span><span class="co-w">Maluuba founding team · Toronto</span></td>
+          <td class="amt">Undisclosed<s>Out of stealth 20 Jul 2026<br>Fidelity, Inovia, Touring, M13,<br>NextView, Garage</s></td>
+          <td class="why">The only team here modelling a <i>business</i> rather than a physical space: Enterprise World Models that simulate how a decision on pricing, hiring, marketing, finance or operations changes a company over time. Sam Pasupalak, Kaheer Suleman and Sumit Pasupalak previously built Maluuba, sold to Microsoft in 2017. First experiment: acquire a small B2B SaaS or e-commerce business for up to $1M and run it almost entirely with AI — a falsifiable public test, not a benchmark.</td>
+        </tr>
+        <tr>
+          <td><span class="co-n">Ineffable Intelligence</span><span class="co-w">David Silver · London</span></td>
+          <td class="amt">$1.1B seed<s>$5.1B val · 27 Apr 2026<br>Sequoia + Lightspeed co-led;<br>Nvidia, DST, Index, Google, UK fund</s></td>
+          <td class="why">Largest seed round in European history. Silver led AlphaGo and AlphaZero; the thesis is the same one — a "superlearner" that discovers knowledge through reinforcement learning rather than by reading human data. No product, no revenue, no public roadmap. First model benchmarks were promised for late 2026, which makes this the single most checkable claim on the board.</td>
+        </tr>
+        <tr>
+          <td><span class="co-n">AMI Labs</span><span class="co-w">Yann LeCun · Paris</span></td>
+          <td class="amt">$1.03B seed<s>Mar 2026 · ~$3.5–5B val<br>SoftBank VF3, Accel</s></td>
+          <td class="why">LeCun spent a decade arguing publicly that token prediction is a dead end and left Meta to fund the alternative: systems that build abstract representations of the world, hold persistent memory, and plan. Valuation is reported inconsistently across sources — see the conflicts log.</td>
+        </tr>
+        <tr>
+          <td><span class="co-n">General Intuition</span><span class="co-w">Sister company of Medal</span></td>
+          <td class="amt">$320M Series A<s>$2.3B val · Jun 2026<br>$454M total · Khosla and others</s></td>
+          <td class="why">The most contrarian data strategy in AI: train on billions of action-labelled video-game clips from Medal's 17M monthly users, on the theory that gameplay is the largest existing corpus of intent-plus-consequence. Reports say one model plays a shooter for 100 hours and then steers a quadruped robot after eight minutes of real-world fine-tuning.</td>
+        </tr>
+        <tr>
+          <td><span class="co-n">Odyssey</span><span class="co-w">Ex-Voyage / ex-Wayve</span></td>
+          <td class="amt">$310M Series B<s>$1.45B val · 17 Jun 2026<br>Natural Capital led; Amazon,<br>AMD Ventures, GV, EQT, IQT</s></td>
+          <td class="why">World models for how people, objects and environments interact — targeted at robotics, autonomy, science and games. Cap table reads as an industry consensus bet: Jeff Dean, Elad Gil, Garry Tan and Kyle Vogt are all existing backers. AWS is now preferred cloud.</td>
+        </tr>
+        <tr>
+          <td><span class="co-n">World Labs</span><span class="co-w">Fei-Fei Li</span></td>
+          <td class="amt">$1.23B total<s>Marble commercial launch Feb 2026<br>$200M Autodesk deal</s></td>
+          <td class="why">The oldest company on this board and the only one with a commercial product. Thesis: the next capability gap is reasoning in three dimensions. Useful as the control case — what a world-model company looks like two years after the seed round.</td>
+        </tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <!-- Cluster 3 -->
+  <div class="cluster" style="--cc:var(--c-learn)">
+    <div class="cl-head">
+      <span class="tag">Problem 03 · Learning without the internet</span>
+      <h3>Can a system keep learning after training stops?</h3>
+      <p>Today's models are frozen at the end of pretraining and the internet has been read. Both facts point at the same missing capability: an agent that learns continually from its own experience, at low cost, in domains where no dataset exists.</p>
+      <div class="unsolved"><b>Why it is still open:</b> continual learning collapses. Networks trained on a stream forget what came before, and nobody has a stable, efficient algorithm at scale. It is the oldest unsolved problem here — and the one with the smallest cheques.</div>
+    </div>
+    <div class="tscroll"><table class="co">
+      <thead><tr><th>Company</th><th>Capital</th><th>The specific bet</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="co-n">Oak Lab</span><span class="co-w">Richard Sutton · Khurram Javed</span></td>
+          <td class="amt"><span class="badge und">Undisclosed</span><s>Launched Jul 2026<br>Left Keen Technologies</s></td>
+          <td class="why">The 2024 Turing laureate and father of reinforcement learning, publicly calling generative AI a dead end at 69. Building his OaK — Options and Knowledge — architecture, and has already published a continual-learning algorithm, NetworkIDBD. The stated target: a trillion-parameter agent that learns and plans in real time on 20 watts. Smallest visible capital, largest claim.</td>
+        </tr>
+        <tr>
+          <td><span class="co-n">Confluence Technologies</span><span class="co-w">YC W26 · Brent Burdick</span></td>
+          <td class="amt">YC W26<s>Demo Day Mar 2026</s></td>
+          <td class="why">Works on "learning efficiency" — solving problems in domains where training data is scarce. Proof of concept: 97.9% on ARC-AGI-2 at roughly $12 per task, on a benchmark explicitly designed to be resistant to scale. Sat in the same YC batch as the benchmark's author and the foundation that runs it.</td>
+        </tr>
+        <tr>
+          <td><span class="co-n">Core Automation <i>(Ceres)</i></span><span class="co-w">Cross-listed from Problem 01</span></td>
+          <td class="amt">$100M @ $1B<s>May 2026</s></td>
+          <td class="why">The <i>Ceres</i> project is a continual-learning bet — 100× less training data — wrapped inside an automated-research company. Two unsolved problems, one cap table.</td>
+        </tr>
+        <tr>
+          <td><span class="co-n">Ineffable Intelligence</span><span class="co-w">Cross-listed from Problem 02</span></td>
+          <td class="amt">$1.1B seed<s>Apr 2026</s></td>
+          <td class="why">"Learns without human data" is a continual-learning claim as much as a world-model claim. If the late-2026 benchmarks land, this cluster reprices.</td>
+        </tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <!-- Cluster 4 -->
+  <div class="cluster" style="--cc:var(--c-arch)">
+    <div class="cl-head">
+      <span class="tag">Problem 04 · Post-transformer architectures</span>
+      <h3>Is there a different shape for the model?</h3>
+      <p>Everything in production is a transformer trained autoregressively. This row is funded on the premise that the architecture, not the scale, is the ceiling — and that a different shape gets more intelligence per FLOP.</p>
+      <div class="unsolved"><b>Why it is still open:</b> alternatives keep winning on small benchmarks and losing at scale, because the transformer has a decade of hardware, tooling and optimiser tuning behind it. Beating it requires beating that entire stack, not just the maths.</div>
+    </div>
+    <div class="tscroll"><table class="co">
+      <thead><tr><th>Company</th><th>Capital</th><th>The specific bet</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="co-n">Ndea</span><span class="co-w">Chollet + Knoop · YC W26 · 15 people</span></td>
+          <td class="amt">$43M<s>YC W26</s></td>
+          <td class="why">François Chollet wrote Keras and designed ARC-AGI, the benchmark the whole field uses to argue about generalisation. His bet: program synthesis fused with deep learning, not larger transformers. Mike Knoop co-founded Zapier. The smallest capital-to-credibility ratio on the board.</td>
+        </tr>
+        <tr>
+          <td><span class="co-n">humans&amp;</span><span class="co-w">Ex-OpenAI, DeepMind, Stanford, MIT</span></td>
+          <td class="amt">$480M seed<s>$4.48B val · 20 Jan 2026<br>SV Angel + Georges Harik led;<br>Nvidia, Bezos, GV</s></td>
+          <td class="why">One of the largest seeds in tech history. Founders Andi Peng, Georges Harik, Eric Zelikman, Yuchen He and Noah Goodman are building around multi-agent reinforcement learning, memory and long-horizon planning — a "human-centric" lab whose architectural argument is that intelligence is social, and single-agent training is the wrong frame.</td>
+        </tr>
+        <tr>
+          <td><span class="co-n">Lamb Labs</span><span class="co-w">YC S26</span></td>
+          <td class="amt">YC S26<s>Demo Day 10 Sep 2026</s></td>
+          <td class="why">Custom inference silicon plus a method for converting autoregressive models into diffusion architectures — attacking the shape and the substrate at once. Earliest-stage entry on the board.</td>
+        </tr>
+        <tr>
+          <td><span class="co-n">Inception Labs</span><span class="co-w">Diffusion language models</span></td>
+          <td class="amt"><span class="badge und">Undisclosed</span><s>Pre-2026</s></td>
+          <td class="why">Generates text by denoising in parallel rather than one token at a time. The most established alternative-decoding company, and the reference point for whether diffusion LMs hold up outside a demo.</td>
+        </tr>
+        <tr>
+          <td><span class="co-n">Logical Intelligence</span><span class="co-w">Energy-based models</span></td>
+          <td class="amt"><span class="badge und">Undisclosed</span><s>Pre-2026</s></td>
+          <td class="why">Energy-based models for safety-critical systems — the architecture LeCun has advocated for years, aimed at domains where a confident wrong answer is unacceptable.</td>
+        </tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <!-- Cluster 5 -->
+  <div class="cluster" style="--cc:var(--c-sci)">
+    <div class="cl-head">
+      <span class="tag">Problem 05 · The machine that runs the experiment</span>
+      <h3>Can AI do science, not just read it?</h3>
+      <p>The best-capitalised cluster after world models, and the one with the clearest customer. The distinction that matters: reading the literature is solved, proposing hypotheses is nearly solved, and <i>running the experiment and knowing what it means</i> is not.</p>
+      <div class="unsolved"><b>Why it is still open:</b> science is bottlenecked on physical throughput and on judgement about which of a thousand results is real. Automating the pipette is engineering. Automating the taste is not.</div>
+    </div>
+    <div class="tscroll"><table class="co">
+      <thead><tr><th>Company</th><th>Capital</th><th>The specific bet</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="co-n">Isomorphic Labs</span><span class="co-w">DeepMind spinout</span></td>
+          <td class="amt">$2B+ Series B<s>May 2026 · Google, Nvidia</s></td>
+          <td class="why">The AlphaFold franchise turned into a drug-discovery company. The most credible route from a model to a molecule anyone has, and the benchmark the rest of this cluster is measured against.</td>
+        </tr>
+        <tr>
+          <td><span class="co-n">Lila Sciences</span><span class="co-w">"Scientific superintelligence"</span></td>
+          <td class="amt">$13B valuation<s>Oct 2025 · Nvidia</s></td>
+          <td class="why">Autonomous labs where the model designs and physically executes experiments. Highest valuation in the cluster by a wide margin, on the least externally verified results.</td>
+        </tr>
+        <tr>
+          <td><span class="co-n">Periodic Labs</span><span class="co-w">"AI scientist"</span></td>
+          <td class="amt">$500M Series A<s>May 2026</s></td>
+          <td class="why">Materials and physical sciences, with a founding team drawn from frontier-lab research rather than from biotech — a deliberate bet that the bottleneck is model capability, not domain access.</td>
+        </tr>
+        <tr>
+          <td><span class="co-n">CuspAI</span><span class="co-w">Materials discovery</span></td>
+          <td class="amt">$450M Series B<s>Jun 2026 · Temasek,<br>Lightspeed, Samsung</s></td>
+          <td class="why">Search over the space of possible materials, with corporate money attached to specific end markets — the most commercially grounded entry here.</td>
+        </tr>
+        <tr>
+          <td><span class="co-n">Chai Discovery</span><span class="co-w">Molecular structure prediction</span></td>
+          <td class="amt">$400M Series C<s>$3.8B val · Jul 2026</s></td>
+          <td class="why">Open-weight structure models used widely enough that adoption, rather than valuation, is the evidence. Repriced fast in July.</td>
+        </tr>
+        <tr>
+          <td><span class="co-n">Helical · Aemon AI · Terranox</span><span class="co-w">Seed and YC stage</span></td>
+          <td class="amt">$10M seed · YC W26<s>Apr 2026 / Mar 2026</s></td>
+          <td class="why">The small end of the same thesis: Helical is a "virtual AI lab for biology"; Aemon AI tests hypotheses at scale; Terranox hunts uranium deposits in North America. Useful as a read on what the cluster looks like without a nine-figure cheque.</td>
+        </tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div class="call">
+    <p class="kicker">What the board says</p>
+    <p><b>The money has moved from applications to premises.</b> In 2024 and 2025 the large private rounds went to companies with revenue. In 2026 the four largest new-lab rounds on this board — Ineffable, AMI, Recursive, humans&amp; — total roughly <b>$3.1B raised against zero shipped product</b>. Investors are no longer buying traction; they are buying a specific disagreement with the transformer.</p>
+    <p><b>Three of the five clusters are the same argument.</b> Self-improvement, continual learning and post-transformer architectures all reduce to one claim: pretraining on a fixed corpus has a ceiling. World models and AI-for-science are the two clusters that would still matter if that claim turns out to be wrong.</p>
+  </div>
+</section>
+
+<!-- ══ 02 · MONEY ════════════════════════════ -->
+<section class="panel" id="p-money" role="tabpanel" aria-labelledby="t-money">
+  <p class="kicker">02 · The money, month by month</p>
+  <h2>$510 billion in six months, and where it actually went</h2>
+  <p class="lede">2026 broke every record that exists, and it did so through a handful of cheques. H1 global venture funding hit $510B — more than all of 2025 — and two companies took 43% of it. Below: the ledger of the largest disclosed AI rounds, month by month, January through 7 August.</p>
+
+  <div class="strip">
+    <div class="cell"><div class="num">$510B</div><div class="stat-l">Global VC, H1 2026</div></div>
+    <div class="cell"><div class="num">$300B</div><div class="stat-l">Q1 alone — an all-time record</div></div>
+    <div class="cell"><div class="num">80%</div><div class="stat-l">Of Q1 went to AI</div></div>
+    <div class="cell"><div class="num">14</div><div class="stat-l">Billion-dollar rounds in July</div></div>
+  </div>
+
+  <figure>
+    <div class="fig-t">Global venture funding by month, 2026</div>
+    <div class="fig-s">$ billions. Crunchbase published separate monthly totals only from April; Q1 is shown as a quarter.</div>
+    <svg viewBox="0 0 720 300" role="img" aria-label="Bar chart of global venture funding: Q1 2026 totalled $300 billion; April $56B, May $92B, June approximately $59B, July $65B.">
+      <line class="gl" x1="52" y1="240" x2="700" y2="240"/>
+      <line class="gl" x1="52" y1="180" x2="700" y2="180" stroke-dasharray="2 4"/>
+      <line class="gl" x1="52" y1="120" x2="700" y2="120" stroke-dasharray="2 4"/>
+      <line class="gl" x1="52" y1="60" x2="700" y2="60" stroke-dasharray="2 4"/>
+      <text class="ax" x="44" y="244" text-anchor="end">0</text>
+      <text class="ax" x="44" y="184" text-anchor="end">40</text>
+      <text class="ax" x="44" y="124" text-anchor="end">80</text>
+      <text class="ax" x="44" y="64" text-anchor="end">120</text>
+
+      <!-- Q1 aggregate block -->
+      <rect x="66" y="36" width="188" height="204" rx="4" fill="var(--accent)" opacity="0.16"/>
+      <rect x="66" y="36" width="188" height="204" rx="4" fill="none" stroke="var(--accent)" stroke-dasharray="4 3" opacity="0.75"/>
+      <text class="val" x="160" y="76" text-anchor="middle" style="font-size:16px">$300B</text>
+      <text class="ax" x="160" y="96" text-anchor="middle">Q1 · JAN–MAR</text>
+      <text class="ax" x="160" y="112" text-anchor="middle" style="fill:var(--muted)">no monthly split published</text>
+      <text class="ax" x="160" y="258" text-anchor="middle">Q1 2026</text>
+
+      <!-- Monthly bars: scale 1.5px per $B from y=240 -->
+      <rect x="300" y="156" width="72" height="84" rx="3" fill="var(--c-world)" opacity="0.85"/>
+      <text class="val" x="336" y="148" text-anchor="middle">56</text>
+      <text class="ax" x="336" y="258" text-anchor="middle">APR</text>
+
+      <rect x="392" y="102" width="72" height="138" rx="3" fill="var(--accent)"/>
+      <text class="val" x="428" y="94" text-anchor="middle">92</text>
+      <text class="ax" x="428" y="258" text-anchor="middle">MAY</text>
+
+      <rect x="484" y="151" width="72" height="89" rx="3" fill="var(--c-world)" opacity="0.5"/>
+      <text class="val" x="520" y="143" text-anchor="middle">~59</text>
+      <text class="ax" x="520" y="258" text-anchor="middle">JUN</text>
+
+      <rect x="576" y="142" width="72" height="98" rx="3" fill="var(--c-world)" opacity="0.85"/>
+      <text class="val" x="612" y="134" text-anchor="middle">65</text>
+      <text class="ax" x="612" y="258" text-anchor="middle">JUL</text>
+
+      <text class="ax" x="336" y="278" text-anchor="middle" style="fill:var(--muted)">Anthropic $15B + Prometheus $10B = 45% of the month</text>
+      <text class="ax" x="612" y="278" text-anchor="middle" style="fill:var(--muted)">record 14 billion-dollar rounds</text>
+    </svg>
+    <div class="legend">
+      <span><i style="background:var(--accent)"></i>Second-largest month on record</span>
+      <span><i style="background:var(--c-world);opacity:.85"></i>Published monthly total</span>
+      <span><i style="background:var(--c-world);opacity:.5"></i>Derived (July was reported +10% on June)</span>
+    </div>
+    <figcaption><b>Read the May bar carefully.</b> $92B was the second-largest month ever recorded — and Anthropic's $50B was 54% of it. Strip out one company and May is an ordinary month. February, which had Anthropic's $30B Series G and Waymo's $16B, is reported as the largest month on record but was not published as a standalone figure.</figcaption>
+  </figure>
+
+  <h3>The ledger</h3>
+  <p class="note" style="margin-bottom:18px">Largest disclosed AI and AI-adjacent rounds per month. Amounts are as reported; valuations are post-money unless stated. Where sources disagree, the conflict is logged in <a href="#watch" data-goto="t-watch">§04</a>.</p>
+
+  <div class="ledger">
+
+    <div class="mo">
+      <div class="mo-head"><span class="m">January</span><span class="t">17 US AI companies raised $100M+ in the first seven weeks of the year</span><span class="s">Q1 total: $300B</span></div>
+      <div class="rows">
+        <div class="row hero"><div class="c">xAI<s>Jan 6 · Series E</s></div><div class="a">$20.0B<s>Valor Equity Partners</s></div><div class="d">Upsized round, proceeds pointed at large-scale compute buildout.</div></div>
+        <div class="row"><div class="c">SkildAI<s>Jan 14 · Series C</s></div><div class="a">$1.40B<s>SoftBank, Nvidia</s></div><div class="d">Robot foundation models.</div></div>
+        <div class="row"><div class="c">humans&amp;<s>Jan 20 · Seed</s></div><div class="a">$480M<s>$4.48B val · SV Angel</s></div><div class="d">One of the largest seeds ever. Frontier lab, no product. <b>On the frontier board.</b></div></div>
+        <div class="row"><div class="c">Baseten<s>Jan 23 · Series E</s></div><div class="a">$300M<s>IVP, CapitalG</s></div><div class="d">Inference infrastructure — raised again five months later.</div></div>
+        <div class="row"><div class="c">OpenEvidence<s>Jan 21 · Series D</s></div><div class="a">$250M<s>Thrive, DST</s></div><div class="d">Clinical evidence search for physicians.</div></div>
+        <div class="row"><div class="c">Decagon<s>Jan 28 · Series D</s></div><div class="a">$250M<s>Coatue, Index</s></div><div class="d">Customer-support agents.</div></div>
+        <div class="row"><div class="c">Flapping Airplanes<s>Jan 28 · Seed</s></div><div class="a">$180M<s>GV, Sequoia, Index</s></div><div class="d">Data efficiency in model training — a $180M seed on an unsolved problem.</div></div>
+        <div class="row"><div class="c">Arena · Inferact · PaleBlueDot<s>Jan 6 / 22 / 28</s></div><div class="a">$150M ea.<s>Felicis · a16z+Lightspeed · B Capital</s></div><div class="d">Three separate $150M rounds inside one month.</div></div>
+        <div class="row"><div class="c">Deepgram<s>Jan 13 · Series C</s></div><div class="a">$130M<s>AVP</s></div><div class="d">Speech recognition.</div></div>
+      </div>
+    </div>
+
+    <div class="mo">
+      <div class="mo-head"><span class="m">February</span><span class="t">Reported as the largest funding month on record</span><span class="s">Anthropic repriced from $380B → $965B in 15 weeks</span></div>
+      <div class="rows">
+        <div class="row hero"><div class="c">Anthropic<s>Feb 12 · Series G</s></div><div class="a">$30.0B<s>$380B val · Founders Fund,<br>Coatue, Nvidia</s></div><div class="d">Second-largest private venture deal in history at the time it closed.</div></div>
+        <div class="row hero"><div class="c">Waymo<s>Feb · Series D</s></div><div class="a">$16.0B<s>$126B val · Alphabet, Dragoneer,<br>DST, Sequoia, a16z, Silver Lake</s></div><div class="d">Largest autonomy round ever raised.</div></div>
+        <div class="row"><div class="c">ElevenLabs<s>Feb 4 · Series D</s></div><div class="a">$500M<s>$11B val · Sequoia</s></div><div class="d">Voice synthesis.</div></div>
+        <div class="row"><div class="c">Runway<s>Feb 10 · Series E</s></div><div class="a">$315M<s>General Atlantic</s></div><div class="d">Video generation.</div></div>
+        <div class="row"><div class="c">Fundamental<s>Feb 5 · Series A</s></div><div class="a">$255M<s>Oak HC/FT, Salesforce Ventures</s></div><div class="d">$255M at Series A.</div></div>
+        <div class="row"><div class="c">Goodfire<s>Feb 5 · Series B</s></div><div class="a">$150M<s>B Capital</s></div><div class="d">Interpretability and model debugging — the safety layer getting priced.</div></div>
+        <div class="row"><div class="c">Simile<s>Feb 12 · Series A</s></div><div class="a">$100M<s>Index Ventures</s></div><div class="d">—</div></div>
+      </div>
+    </div>
+
+    <div class="mo">
+      <div class="mo-head"><span class="m">March</span><span class="t">The single largest private financing in history closed on 31 March</span><span class="s">~32 rounds of $100M+</span></div>
+      <div class="rows">
+        <div class="row hero"><div class="c">OpenAI<s>Closed Mar 31</s></div><div class="a">$122.0B<s>First tranche $110B —<br>Amazon $50B, Nvidia $30B,<br>SoftBank $30B</s></div><div class="d">Exceeded the entire previous quarterly record for <i>global</i> startup investment. Four of the five largest venture rounds ever recorded closed in Q1 2026; this was the largest.</div></div>
+        <div class="row"><div class="c">Nscale<s>Mar · Series C</s></div><div class="a">$2.00B<s>$14.6B val · Nvidia</s></div><div class="d">AI data centre buildout.</div></div>
+        <div class="row"><div class="c">Shield AI<s>Mar</s></div><div class="a">~$2.00B<s>Up to $18B val</s></div><div class="d">Autonomy for defence.</div></div>
+        <div class="row"><div class="c">AMI Labs<s>Mar 10 · Seed</s></div><div class="a">$1.03B<s>SoftBank VF3, Accel</s></div><div class="d">Yann LeCun's world-model lab. Largest seed in European history — held for seven weeks. <b>On the frontier board.</b></div></div>
+        <div class="row"><div class="c">Unreasonable Labs<s>Mar 10</s></div><div class="a">$13.5M<s>Playground Global</s></div><div class="d">AI for scientific discovery, out of DeepMind and MIT. Included for scale contrast: same day, 1.3% of the cheque.</div></div>
+      </div>
+    </div>
+
+    <div class="mo">
+      <div class="mo-head"><span class="m">April</span><span class="t">$56B globally — up 100% year over year</span><span class="s">Two companies = 45% of the month</span></div>
+      <div class="rows">
+        <div class="row hero"><div class="c">Anthropic<s>Apr</s></div><div class="a">$15.0B<s>27% of all April venture funding</s></div><div class="d">Second raise of the year; a third followed in May.</div></div>
+        <div class="row hero"><div class="c">Project Prometheus<s>Apr · Bezos-backed</s></div><div class="a">$10.0B<s>18% of the month</s></div><div class="d">Industrial AI and physical-product design. Reported again in June at $12B / $41B valuation — see conflicts log.</div></div>
+        <div class="row"><div class="c">Ineffable Intelligence<s>Apr 27 · Seed</s></div><div class="a">$1.10B<s>$5.1B val · Sequoia +<br>Lightspeed co-led</s></div><div class="d">David Silver's superlearner lab. Took the European seed record from AMI Labs after 48 days. <b>On the frontier board.</b></div></div>
+        <div class="row"><div class="c">Recursive Superintelligence<s>Apr · Pre-Series A</s></div><div class="a">~$500M<s>$4B pre-money · GV led, Nvidia</s></div><div class="d">Raised four months after founding, before public launch. <b>On the frontier board.</b></div></div>
+        <div class="row"><div class="c">Stegra · Vast Data<s>Apr</s></div><div class="a">$1B+ ea.<s>Green steel · AI data ops</s></div><div class="d">The other two billion-dollar rounds of the month.</div></div>
+      </div>
+    </div>
+
+    <div class="mo">
+      <div class="mo-head"><span class="m">May</span><span class="t">$92B — second-largest month on record. AI took 79% ($72B)</span><span class="s">One company took 54%</span></div>
+      <div class="rows">
+        <div class="row hero"><div class="c">Anthropic<s>May · third raise of 2026</s></div><div class="a">$50.0B<s>$965B valuation</s></div><div class="d">Repriced from $380B in February to $965B in May. 54% of the entire month's global venture funding.</div></div>
+        <div class="row"><div class="c">Anduril<s>May</s></div><div class="a">$5.00B<s>Defence</s></div><div class="d">—</div></div>
+        <div class="row"><div class="c">StepFun · Moonshot AI<s>May · China</s></div><div class="a">$2B+ ea.<s>Frontier labs</s></div><div class="d">Two Chinese frontier labs above $2B in the same month.</div></div>
+        <div class="row"><div class="c">Isomorphic Labs<s>May · Series B</s></div><div class="a">$2.00B+<s>Google, Nvidia</s></div><div class="d">DeepMind's drug-discovery spinout. <b>On the frontier board.</b></div></div>
+        <div class="row"><div class="c">Cognition<s>May</s></div><div class="a">$1.00B<s>Coding agents</s></div><div class="d">—</div></div>
+        <div class="row"><div class="c">Sierra<s>May</s></div><div class="a">$950M<s>Customer-facing agents</s></div><div class="d">—</div></div>
+        <div class="row"><div class="c">Periodic Labs<s>May · Series A</s></div><div class="a">$500M<s>AI scientist</s></div><div class="d"><b>On the frontier board.</b></div></div>
+        <div class="row"><div class="c">Core Automation<s>May</s></div><div class="a">$100M<s>$1B val · Nvidia, Spark, Accel</s></div><div class="d">Jerry Tworek's automated-research lab, launched and funded in the same month. <b>On the frontier board.</b></div></div>
+      </div>
+    </div>
+
+    <div class="mo">
+      <div class="mo-head"><span class="m">June</span><span class="t">~$59B globally · the broadest month of the year</span><span class="s">Q2 total: $205B</span></div>
+      <div class="rows">
+        <div class="row hero"><div class="c">DeepSeek<s>Jun · Series A · China</s></div><div class="a">¥50.0B<s>≈ $7B · IDG, Tencent, NetEase</s></div><div class="d">Largest disclosed round of the month globally. Converted figure is approximate.</div></div>
+        <div class="row"><div class="c">DayOne<s>Jun · Series C</s></div><div class="a">$2.50B<s>Coatue, Hillhouse</s></div><div class="d">AI data centres.</div></div>
+        <div class="row"><div class="c">Baseten<s>Jun · Series F</s></div><div class="a">$1.50B<s>Nvidia, Wellington, Spark</s></div><div class="d">Second round of 2026 — 5× the January cheque, five months later.</div></div>
+        <div class="row"><div class="c">NEURA Robotics<s>Jun · Series C · Germany</s></div><div class="a">$1.40B<s>Amazon, Nvidia, Bosch</s></div><div class="d">Largest European robotics round of the year.</div></div>
+        <div class="row"><div class="c">AppsFlyer<s>Jun · Series E</s></div><div class="a">$1.00B<s>Google, Meta, Moloco</s></div><div class="d">—</div></div>
+        <div class="row"><div class="c">Groq<s>Jun · Venture</s></div><div class="a">$650M<s>Inference silicon</s></div><div class="d">—</div></div>
+        <div class="row"><div class="c">CuspAI<s>Jun · Series B</s></div><div class="a">$450M<s>Temasek, Lightspeed, Samsung</s></div><div class="d">Materials discovery. <b>On the frontier board.</b></div></div>
+        <div class="row"><div class="c">Generalist AI · Suno<s>Jun · Series B / D</s></div><div class="a">$400M ea.<s>Nvidia, Spark, USV · Lightspeed, Menlo</s></div><div class="d">Robotics foundation models; AI music.</div></div>
+        <div class="row"><div class="c">General Intuition<s>Jun · Series A</s></div><div class="a">$320M<s>$2.3B val · $454M total</s></div><div class="d">Action foundation models from gameplay. <b>On the frontier board.</b></div></div>
+        <div class="row"><div class="c">Odyssey<s>Jun 17 · Series B</s></div><div class="a">$310M<s>$1.45B val · Natural Capital led</s></div><div class="d">World models. <b>On the frontier board.</b></div></div>
+        <div class="row"><div class="c">Mirendil<s>Jun 25 · Seed</s></div><div class="a">$200M<s>$1B val · a16z + Kleiner<br>co-led, Nvidia</s></div><div class="d">Self-improving AI research, four weeks after two researchers left Anthropic. <b>On the frontier board.</b></div></div>
+      </div>
+    </div>
+
+    <div class="mo">
+      <div class="mo-head"><span class="m">July</span><span class="t">$65B globally · 14 billion-dollar rounds — the highest count in any single month</span><span class="s">+10% on June, +100% YoY</span></div>
+      <div class="rows">
+        <div class="row hero"><div class="c">Blue Origin<s>Jul</s></div><div class="a">$10.0B<s>Space</s></div><div class="d">Largest round of the month; not AI, but it sets the scale.</div></div>
+        <div class="row hero"><div class="c">Safe Superintelligence<s>Jul · Nvidia</s></div><div class="a">$5.00B<s>Single strategic investor</s></div><div class="d">Largest pure-AI deal of the month, into a lab with no product and no stated timeline.</div></div>
+        <div class="row"><div class="c">Moonshot AI<s>Jul · China</s></div><div class="a">$3.50B<s>Second raise of 2026</s></div><div class="d">Raised $2B+ in May and $3.5B in July.</div></div>
+        <div class="row"><div class="c">Kling AI<s>Jul · China</s></div><div class="a">~$2.80B<s>Video generation</s></div><div class="d">—</div></div>
+        <div class="row"><div class="c">Helsing<s>Jul · Series E · Germany</s></div><div class="a">$1.80B<s>Defence AI</s></div><div class="d">—</div></div>
+        <div class="row"><div class="c">Joulent<s>Jul · Strategic</s></div><div class="a">$1.75B<s>Energy for AI</s></div><div class="d">Houston-based. Power, not models.</div></div>
+        <div class="row"><div class="c">Atoms<s>Jul · a16z led</s></div><div class="a">$1.70B<s>Travis Kalanick</s></div><div class="d">Physical AI.</div></div>
+        <div class="row"><div class="c">Fireworks AI<s>Jul</s></div><div class="a">$1.50B<s>Inference</s></div><div class="d">—</div></div>
+        <div class="row"><div class="c">Neko Health<s>Jul · Series C</s></div><div class="a">$700M<s>Preventive health scanning</s></div><div class="d">—</div></div>
+        <div class="row"><div class="c">Chai Discovery<s>Jul · Series C</s></div><div class="a">$400M<s>$3.8B val</s></div><div class="d">AI drug discovery. <b>On the frontier board.</b></div></div>
+        <div class="row"><div class="c">Skyfall AI<s>Jul 20 · out of stealth</s></div><div class="a">Undisclosed<s>Fidelity, Inovia, Touring,<br>M13, NextView, Garage</s></div><div class="d">Enterprise world models. Announced it will buy a company for up to $1M and run it with AI. <b>On the frontier board.</b></div></div>
+      </div>
+    </div>
+
+    <div class="mo">
+      <div class="mo-head"><span class="m">August <span style="color:var(--muted);letter-spacing:0.06em">· through the 7th</span></span><span class="t">Partial month</span><span class="s">Energy for AI is the through-line</span></div>
+      <div class="rows">
+        <div class="row hero"><div class="c">Valar Atomics<s>Aug 4 · Series B</s></div><div class="a">$1.00B<s>Sequoia led · $1.2B total<br>incl. credit facility</s></div><div class="d">Nuclear for AI workloads.</div></div>
+        <div class="row hero"><div class="c">Base Power<s>Aug 4 · Series D</s></div><div class="a">$1.00B<s>~$2.5B+ total raised</s></div><div class="d">Austin-based grid storage. Two billion-dollar energy rounds on the same day.</div></div>
+        <div class="row"><div class="c">Mirendil ↔ Google Cloud<s>Aug 6 · compute deal</s></div><div class="a">$100M+<s>Multi-year</s></div><div class="d">Roughly half the seed round committed straight to compute. <b>On the frontier board.</b></div></div>
+        <div class="row"><div class="c">Discovery Loop<s>Aug 5 · founded</s></div><div class="a">Undisclosed<s>Google, Radical, Khosla</s></div><div class="d">Jeff Dean and Sanjay Ghemawat leave Google after 27 years. <b>On the frontier board.</b></div></div>
+      </div>
+    </div>
+
+  </div>
+
+  <figure>
+    <div class="fig-t">Concentration: where H1 2026's $510B went</div>
+    <div class="fig-s">Two companies took 43 cents of every venture dollar deployed globally in the first half.</div>
+    <svg viewBox="0 0 720 190" role="img" aria-label="Stacked bar showing OpenAI and Anthropic took $217 billion of $510 billion H1 2026 global venture funding, 43 percent; other AI companies took roughly 30 percent; all non-AI companies the remainder.">
+      <rect x="0" y="40" width="304" height="52" rx="3" fill="var(--accent)"/>
+      <rect x="306" y="40" width="212" height="52" rx="3" fill="var(--c-world)" opacity="0.8"/>
+      <rect x="520" y="40" width="200" height="52" rx="3" fill="var(--line)"/>
+      <text class="val" x="14" y="72" style="fill:var(--on-accent)">$217B · 43%</text>
+      <text class="val" x="320" y="72" style="fill:var(--on-accent)">~30%</text>
+      <text class="val" x="534" y="72">~27%</text>
+      <text class="ax" x="0" y="112">OPENAI + ANTHROPIC</text>
+      <text class="ax" x="306" y="112">ALL OTHER AI</text>
+      <text class="ax" x="520" y="112">EVERYTHING ELSE</text>
+      <text class="ax" x="0" y="152" style="fill:var(--muted)">Q1: four companies — OpenAI, Anthropic, xAI, Waymo — raised $188B, 65% of the quarter.</text>
+      <text class="ax" x="0" y="170" style="fill:var(--muted)">Q2: 16 billion-dollar rounds totalled $108.6B. AI took over 70% of all Q2 capital.</text>
+    </svg>
+    <figcaption><b>The distribution is the story.</b> Global funding "records" in 2026 are not evidence of a broad market. Strip out OpenAI, Anthropic, xAI and Waymo and the remaining ~$322B across roughly 11,000 companies is a strong year, not a historic one. Around 88% of 2026 AI funding — some $319B — went to US-headquartered companies.</figcaption>
+  </figure>
+
+  <div class="call warn">
+    <p class="kicker">Handle with care</p>
+    <p>Round sizes in 2026 are unusually hard to pin down. Companies raise in tranches, announce at signing rather than closing, and count credit facilities alongside equity. Anthropic appears in this ledger in <b>February ($30B), April ($15B) and May ($50B)</b> — those are three separate reported events, and aggregate "total raised" figures across the press do not reconcile with them. Treat every number here as press-reported, not audited.</p>
+  </div>
+</section>
+
+<!-- ══ 03 · YC ═══════════════════════════════ -->
+<section class="panel" id="p-yc" role="tabpanel" aria-labelledby="t-yc">
+  <p class="kicker">03 · Y Combinator</p>
+  <h2>The batch that stopped writing software</h2>
+  <p class="lede">Y Combinator ran three batches in 2026. The Winter cohort is being called the strongest in the accelerator's history, and it is also the least software-like: one in eight companies builds something physical, and the largest growth category is industrials and defence.</p>
+
+  <div class="strip">
+    <div class="cell"><div class="num">199</div><div class="stat-l">Companies in W26</div></div>
+    <div class="cell"><div class="num">1 in 8</div><div class="stat-l">Building physical hardware</div></div>
+    <div class="cell"><div class="num">35 → 17</div><div class="stat-l">Industrials/defence, vs prior batch</div></div>
+    <div class="cell"><div class="num">3×</div><div class="stat-l">More companies at $1M ARR than W25</div></div>
+  </div>
+
+  <figure>
+    <div class="fig-t">YC W26 by category</div>
+    <div class="fig-s">199 companies across 15 categories. Shown: the categories that define the batch.</div>
+    <svg viewBox="0 0 720 250" role="img" aria-label="Bar chart of YC Winter 2026 categories: AI infrastructure 39 companies, industrials and defence 35, physical AI approximately 25, legal AI 8.">
+      <g>
+        <text class="ax" x="0" y="30">AI INFRASTRUCTURE</text>
+        <rect x="0" y="38" width="390" height="22" rx="3" fill="var(--accent)"/>
+        <text class="val" x="402" y="54">39</text>
+        <text class="ax" x="440" y="54" style="fill:var(--muted)">agent testing, sandboxes, runtime security</text>
+      </g>
+      <g>
+        <text class="ax" x="0" y="90">INDUSTRIALS &amp; DEFENCE</text>
+        <rect x="0" y="98" width="350" height="22" rx="3" fill="var(--c-sci)"/>
+        <text class="val" x="362" y="114">35</text>
+        <text class="ax" x="400" y="114" style="fill:var(--muted)">tripled from 17 in the prior cohort</text>
+      </g>
+      <g>
+        <text class="ax" x="0" y="150">PHYSICAL AI (approx.)</text>
+        <rect x="0" y="158" width="250" height="22" rx="3" fill="var(--c-world)"/>
+        <text class="val" x="262" y="174">~25</text>
+        <text class="ax" x="304" y="174" style="fill:var(--muted)">robots, drones, wearables, space hardware</text>
+      </g>
+      <g>
+        <text class="ax" x="0" y="210">LEGAL AI</text>
+        <rect x="0" y="218" width="80" height="22" rx="3" fill="var(--c-arch)"/>
+        <text class="val" x="92" y="234">8</text>
+        <text class="ax" x="128" y="234" style="fill:var(--muted)">smallest category, highest average quality score</text>
+      </g>
+    </svg>
+    <figcaption><b>The AI-infrastructure number is the interesting one.</b> 39 of 199 companies build tooling for agents rather than agents. The batch's own bet is that agent reliability — testing, sandboxing, validating, securing — becomes its own layer of the stack, the way observability did for cloud.</figcaption>
+  </figure>
+
+  <h3>W26 · Winter 2026 <span class="note" style="font-weight:400">— Demo Day 26 March</span></h3>
+  <p style="color:var(--ink-2);font-size:15px;max-width:74ch">Rebel Fund's model scored 35% of W26 in its top-20% band — by its own account "far more than any other YC batch." Founders skew younger and more recently graduated, and the batch is more Bay Area-concentrated and far less consumer than historical norms.</p>
+
+  <div class="cluster" style="--cc:var(--c-arch);margin-top:20px">
+    <div class="cl-head"><span class="tag">The reasoning cluster</span><h3>The benchmark, its author, and the company that beat it — in one batch</h3><p>A genuinely unusual coincidence: ARC-AGI's creator, the foundation that runs it, and the lab that posted 97.9% on ARC-AGI-2 all sat in W26 together.</p></div>
+    <div class="tscroll"><table class="co">
+      <thead><tr><th>Company</th><th>Signal</th><th>What it is</th></tr></thead>
+      <tbody>
+        <tr><td><span class="co-n">Ndea</span><span class="co-w">Chollet + Knoop</span></td><td class="amt">$43M · 15 people</td><td class="why">Program synthesis fused with deep learning as the path to AGI. Chollet wrote Keras and designed ARC-AGI; Knoop co-founded Zapier. <b>On the frontier board.</b></td></tr>
+        <tr><td><span class="co-n">Confluence Technologies</span><span class="co-w">Brent Burdick</span></td><td class="amt">97.9% ARC-AGI-2</td><td class="why">At roughly $12 per task. Focused on learning efficiency in data-scarce domains. <b>On the frontier board.</b></td></tr>
+        <tr><td><span class="co-n">ARC Prize Foundation</span><span class="co-w">Benchmark operator</span></td><td class="amt">Used by OpenAI,<br>Anthropic, Google</td><td class="why">Runs the benchmark the frontier labs use to argue about generalisation.</td></tr>
+        <tr><td><span class="co-n">Rubric</span><span class="co-w">Post-training research</span></td><td class="amt">Exabyte scale</td><td class="why">Post-training research infrastructure.</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <h4>The rest of W26, by what it is actually attacking</h4>
+  <ul class="tight">
+    <li><b>Agent reliability</b> — Polymath (long-running training environments), Salus (validates agent actions before execution), Arga Labs (sandboxed replicas of real services for testing), Compresr (context compression), Moda (monitoring and debugging autonomous systems), Corelayer and IncidentFox (AI on-call engineers), The Token Company (LLM input compression).</li>
+    <li><b>Physical AI and the data problem behind it</b> — One Robot (world-model simulation of gripping and assembly), Asimov (collects human-movement video to train humanoids), RoboDock (autonomous fleet charging), Servo7 and Hetherington Robotics.</li>
+    <li><b>Science and resources</b> — Aemon AI (tests hypotheses at scale), Terranox AI (uranium deposit discovery), Strand AI (biological measurement infrastructure), Axion (satellite imagery).</li>
+    <li><b>Energy, because the models need it</b> — Squid (AI grid planning), Voxel Energy (power for data centres), Condor Energy (procurement).</li>
+    <li><b>AI-native services rather than software</b> — General Legal and Moritz positioned as AI-native law firms, not vendors selling to firms. The most interesting structural bet in the batch.</li>
+    <li><b>Consumer and devices</b> — Button Computer (voice-controlled wearable, ex-Apple founders), Pocket (conversation capture), Fort (strength-training wearable), Doomersion (language learning through short video).</li>
+    <li><b>Security and trust</b> — Hex (continuous vulnerability probing), Crosslayer Labs (website spoof detection), Beesafe AI (impersonation scams), Veriad AI (marketing compliance), MouseCat (cloud-storage fraud detection).</li>
+  </ul>
+
+  <h3>P26 · Spring 2026</h3>
+  <ul class="tight">
+    <li><b>Tasklet</b> — a cloud agent that operates across business applications.</li>
+    <li><b>Superset</b> — open-source IDE for coordinating parallel coding agents.</li>
+    <li><b>Arga Labs</b> — sandboxed service replicas for agent testing.</li>
+    <li><b>Silmaril</b> — runtime protection against prompt injection.</li>
+    <li><b>Complir</b> — compliance for physical products.</li>
+    <li><b>9 Mothers</b> — autonomous counter-drone systems.</li>
+    <li><b>Ploy</b> — agents that optimise websites and campaigns.</li>
+  </ul>
+
+  <h3>S26 · Summer 2026 <span class="note" style="font-weight:400">— Demo Day 10 September, running now</span></h3>
+  <p style="color:var(--ink-2);font-size:15px;max-width:74ch">Incomplete by definition: the batch runs July through September and has not pitched yet. Early names worth a watch:</p>
+  <ul class="tight">
+    <li><b>Lamb Labs</b> — custom inference silicon, plus converting autoregressive models into diffusion architectures. <b>On the frontier board.</b></li>
+    <li><b>Tracer</b> — a research lab studying coordinated intelligence across AI systems.</li>
+    <li><b>Experiential Labs</b> — world models to improve agent understanding.</li>
+    <li><b>Grip Robotics</b> — physical AI grippers for waste and materials handling.</li>
+    <li><b>Decawork</b> — an agent control plane for IT: deploy, govern and maintain agents company-wide.</li>
+    <li><b>Justinian</b> — pitched as the first AI government-affairs firm.</li>
+    <li><b>Conifer</b> — model routing that balances cost against data locality.</li>
+    <li><b>Instance</b> — automated labelling for robot training and evaluation.</li>
+    <li><b>Context.dev</b> — real-time structured web data as an API for agents.</li>
+  </ul>
+
+  <div class="call">
+    <p class="kicker">What YC 2026 tells you that the funding data does not</p>
+    <p><b>The seed layer has stopped competing with the labs and started supplying them.</b> The mega-rounds in §02 go to companies training models. The batches in §03 mostly go to companies making those models safe to deploy, feeding them data, or wiring them to physical systems. Only a handful — Ndea, Confluence, Lamb Labs — take the labs on directly, and all three do it by rejecting scale rather than trying to match it.</p>
+  </div>
+</section>
+
+<!-- ══ 04 · WATCHLIST ════════════════════════ -->
+<section class="panel" id="p-watch" role="tabpanel" aria-labelledby="t-watch">
+  <p class="kicker">04 · Watchlist &amp; method</p>
+  <h2>What would change this page</h2>
+  <p class="lede">A tracker is only useful if it tells you what to look for next. These are the dated, checkable events between now and the end of 2026 that would move companies on or off the frontier board.</p>
+
+  <div class="watch">
+    <div class="w" style="--wc:var(--c-world)">
+      <span class="tag">LATE 2026</span>
+      <b>Ineffable's first benchmarks</b>
+      <span>Silver's lab said first model benchmarks would arrive by late 2026. $1.1B was raised against a claim with a date on it — the cleanest test on this board.</span>
+      <em>WATCH: any published eval</em>
+    </div>
+    <div class="w" style="--wc:var(--c-world)">
+      <span class="tag">OPEN</span>
+      <b>Skyfall's acquisition closing</b>
+      <span>The plan is to buy a small B2B SaaS or e-commerce business for up to $1M and run it almost entirely with AI. Which company, and what the P&amp;L does afterwards, is a real-world result — not a demo.</span>
+      <em>WATCH: named target, then quarterly numbers</em>
+    </div>
+    <div class="w" style="--wc:var(--c-self)">
+      <span class="tag">Q3–Q4 2026</span>
+      <b>Core Automation's round</b>
+      <span>Reported to be raising $300–500M at ~$4B, weeks after closing $100M at $1B. If it prices, automated-research labs have gone 4× in a quarter on no product.</span>
+      <em>WATCH: confirmed close and valuation</em>
+    </div>
+    <div class="w" style="--wc:var(--c-self)">
+      <span class="tag">NEXT 90 DAYS</span>
+      <b>Discovery Loop's raise and hires</b>
+      <span>Announced 5 August with no disclosed amount. Given the founders, the size of the first round and who else leaves Google to join will set the price for the whole self-improvement cluster.</span>
+      <em>WATCH: round size, departures from Google Research</em>
+    </div>
+    <div class="w" style="--wc:var(--c-learn)">
+      <span class="tag">OPEN</span>
+      <b>Oak Lab's funding</b>
+      <span>No disclosed capital, a Turing laureate, and the most aggressive claim on the board — real-time learning at 20 watts. Whether serious money attaches to Sutton's architecture is the market's verdict on continual learning.</span>
+      <em>WATCH: any announced round</em>
+    </div>
+    <div class="w" style="--wc:var(--c-arch)">
+      <span class="tag">10 SEP 2026</span>
+      <b>YC S26 Demo Day</b>
+      <span>The first cohort assembled entirely after the 2026 mega-rounds. Whether it keeps W26's deep-tech and physical tilt, or reverts to application software, is the leading indicator for 2027 seed.</span>
+      <em>WATCH: physical-AI share, foundational-research count</em>
+    </div>
+    <div class="w" style="--wc:var(--c-sci)">
+      <span class="tag">ONGOING</span>
+      <b>Whether ARC-AGI-2 stays beaten</b>
+      <span>Confluence posted 97.9% at ~$12 per task. If that reproduces independently — and if ARC-AGI-3 resets it — the case for scale-rejecting architectures gets its first hard evidence.</span>
+      <em>WATCH: independent replication, ARC-AGI-3 results</em>
+    </div>
+    <div class="w" style="--wc:var(--accent)">
+      <span class="tag">Q3 2026</span>
+      <b>Whether the concentration breaks</b>
+      <span>Two companies took 43% of H1. July's record 14 billion-dollar rounds came from 14 different companies. If Q3 keeps that breadth, the market is genuinely widening rather than just getting larger.</span>
+      <em>WATCH: Q3 totals, share taken by top 4</em>
+    </div>
+  </div>
+
+  <hr class="rule">
+
+  <h3>Conflicts log</h3>
+  <p style="color:var(--ink-2);font-size:15px;max-width:74ch">Every figure below is reported differently by at least two credible sources. Where this page had to choose, it took the primary business-press number over aggregator databases, and said so.</p>
+  <ul class="tight">
+    <li><b>AMI Labs valuation.</b> The $1.03B seed is consistent across sources; the valuation is reported at $3.5B in some accounts and $5B in others. Page shows the range.</li>
+    <li><b>Project Prometheus.</b> Crunchbase reports $10B in April; other trackers report a $12B Series B at a $41B valuation dated June. These may be tranches of one raise or two separate events. Page shows April and flags the June report.</li>
+    <li><b>H1 2026 total.</b> $510B (Crunchbase, H1 report) vs $515B (Crunchbase, July report, Jan–Jun). Page uses $510B.</li>
+    <li><b>Q1 2026 total.</b> Reported as $297B, $300B and $305B across three outlets. Page uses $300B.</li>
+    <li><b>Anthropic's 2026 raises.</b> $30B (Feb), $15B (Apr) and $50B (May) are separately reported. Some aggregators report a single "$132B Series H at $965B." These do not reconcile; the page lists the three monthly events.</li>
+    <li><b>General Intuition.</b> One tracker lists a "$2.3B Series B." The primary reporting is a <b>$320M Series A at a $2.3B valuation</b> — a valuation mistaken for a round size. Page uses the primary figure. This is the most common error class in AI funding data.</li>
+    <li><b>Maluuba's sale price.</b> Reported at US$140M (Wikipedia) and ~US$160M (2026 founder profiles). Terms were never disclosed. Relevant as the Skyfall founders' track record.</li>
+    <li><b>Skyfall's round.</b> Undisclosed. Investor list is confirmed; amount and valuation are not public.</li>
+    <li><b>Oak Lab, Discovery Loop, Inception Labs, Logical Intelligence.</b> No disclosed funding. Listed on thesis and team, not capital.</li>
+    <li><b>Poetiq and Flapping Airplanes.</b> Documented in aggregator trackers and one funding roundup respectively; thinner sourcing than the rest of the board. Flagged rather than dropped.</li>
+  </ul>
+
+  <h3>Method</h3>
+  <ul class="tight">
+    <li><b>Scope.</b> Compiled 7 August 2026. Funding ledger covers 1 January – 7 August 2026. August is a partial month.</li>
+    <li><b>Inclusion on the frontier board.</b> A company qualifies if its stated thesis targets a capability that no shipped system currently has, and if it passes at least four of the five tests in §01. Companies with revenue from an existing product are included only where they are the reference case for a cluster (World Labs, Isomorphic).</li>
+    <li><b>The ledger is disclosed rounds only.</b> Private secondaries, debt, and undisclosed raises are excluded except where noted. Monthly totals are all-sector global venture funding from Crunchbase; the June figure is derived from the reported July-over-June change, not published directly.</li>
+    <li><b>Currency.</b> ¥50B is shown as reported with an approximate USD conversion at roughly 7.1 CNY/USD. Treat as indicative.</li>
+    <li><b>Not verified.</b> Valuations, round sizes, headcounts and benchmark scores are press-reported and not independently confirmed. Benchmark claims — including Confluence's ARC-AGI-2 result — are self-reported unless stated otherwise.</li>
+    <li><b>Editorial.</b> Cluster assignments, the five tests, and the watchlist are judgement, not fact. Reasonable people would sort several of these companies differently.</li>
+    <li><b>Independence.</b> Not affiliated with, endorsed by, or published by any company named. No sponsorship, no tracking, no analytics.</li>
+  </ul>
+
+  <h3>Principal sources</h3>
+  <div class="srcs">
+    <div><span class="src-n">01</span>TechCrunch — "Jeff Dean and other top AI researchers are leaving Google to launch their own startup," 5 Aug 2026</div>
+    <div><span class="src-n">02</span>TechCrunch — "Exclusive: Mirendil inks $100M+ Google Cloud deal to scale self-improving AI," 6 Aug 2026</div>
+    <div><span class="src-n">03</span>TechCrunch — "DeepMind's David Silver just raised $1.1B to build an AI that learns without human data," 27 Apr 2026</div>
+    <div><span class="src-n">04</span>TechCrunch — "General Intuition's $2.3B bet that video games can train AI agents for the real world," 25 Jun 2026</div>
+    <div><span class="src-n">05</span>TechCrunch — "What happens when AI starts building itself," 14 May 2026</div>
+    <div><span class="src-n">06</span>TechCrunch — "Here are the 17 US-based AI companies that have raised $100M or more in 2026," 17 Feb 2026</div>
+    <div><span class="src-n">07</span>TechCrunch — "16 of the most interesting startups from YC W26 Demo Day," 26 Mar 2026</div>
+    <div><span class="src-n">08</span>Crunchbase News — "Global Startup Investment Hit Record $510B In H1 2026," Q2/H1 2026</div>
+    <div><span class="src-n">09</span>Crunchbase News — "Q1 2026 Shatters Venture Funding Records," Q1 2026</div>
+    <div><span class="src-n">10</span>Crunchbase News — "Anthropic Funding Pushed Startup Investment To Near-Record Levels In May," Jun 2026</div>
+    <div><span class="src-n">11</span>Crunchbase News — "Billion-Dollar AI Rounds Push April To Third-Highest Startup Funding Month In A Year," May 2026</div>
+    <div><span class="src-n">12</span>Crunchbase News — "A Record 14 Billion-Dollar Rounds In July Pushed Venture's Historic Run Higher," Aug 2026</div>
+    <div><span class="src-n">13</span>CNBC — "Ex-DeepMind David Silver raises $1.1 billion for AI startup Ineffable," 27 Apr 2026</div>
+    <div><span class="src-n">14</span>Forbes — "Former Microsoft AI Leaders Are Spending $1M To Prove AI Can Replace CEOs," 20 Jul 2026</div>
+    <div><span class="src-n">15</span>Tech Startups — "Skyfall AI, founded by ex-Microsoft researchers, emerges from stealth," 20 Jul 2026</div>
+    <div><span class="src-n">16</span>Tech Startups — "AI startup Humans&amp; raises $480M seed at $4.48B valuation," 20 Jan 2026</div>
+    <div><span class="src-n">17</span>The Logic — "Skyfall AI wants to buy a small tech business and run it with AI," 2026</div>
+    <div><span class="src-n">18</span>The Decoder — "Ex-OpenAI researcher Jerry Tworek launches Core Automation," 2026</div>
+    <div><span class="src-n">19</span>The Decoder — "Self-improving AI startup Recursive Superintelligence pulls in $500 million," 2026</div>
+    <div><span class="src-n">20</span>The Next Web — "Richard Sutton leaves Carmack to start his own AI lab," Jul 2026</div>
+    <div><span class="src-n">21</span>The Next Web — "Ex-Anthropic researchers raise $200M for self-improving AI," Jun 2026</div>
+    <div><span class="src-n">22</span>SiliconANGLE — "Mirendil raises $200M to speed up scientific research with AI," 25 Jun 2026</div>
+    <div><span class="src-n">23</span>HPCwire / AIwire — "Odyssey Raises $310M Series B to Advance AI World Models," Jun 2026; "Unreasonable Labs Emerges from Stealth," 10 Mar 2026</div>
+    <div><span class="src-n">24</span>CB Insights — "Y Combinator's Winter 2026 batch is its most technically complex cohort yet," 2026</div>
+    <div><span class="src-n">25</span>Jared Heyman / Rebel Fund — "On the freakishly strong YC W26 batch," 2026</div>
+    <div><span class="src-n">26</span>Forbes — "21 most promising startups from Y Combinator's latest batch," 16 Mar 2026</div>
+    <div><span class="src-n">27</span>StartupHub.ai — Claude's Corner profiles of Ndea and Confluence Labs, YC W26</div>
+    <div><span class="src-n">28</span>AlleyWatch — "The 19 Largest Global Startup Funding Rounds of June 2026," Jul 2026</div>
+    <div><span class="src-n">29</span>Crunchbase News — Turing winner LeCun's world-model lab AMI raises Europe's largest seed round, Mar 2026</div>
+    <div><span class="src-n">30</span>GeekWire — Reporting on Discovery Loop and on the Ineffable Intelligence seed round, 2026</div>
+    <div><span class="src-n">31</span>cleverhack — Neolab and Emerging AI Lab Tracker (used for candidate discovery; every entry re-verified against primary reporting before inclusion)</div>
+    <div><span class="src-n">32</span>Company sites — mirendil.com, Oak Lab publications (OaK architecture, NetworkIDBD), ycombinator.com company pages</div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="shell">
+    TRACKER 03 · THE FRONTIER BOARD · COMPILED 7 AUGUST 2026 · SINGLE-FILE HTML, NO EXTERNAL ASSETS, NO TRACKING<br>
+    COMPANION REPORTS: <a href="https://vivekally.github.io/ai-stack-report/">THE AI TECHNOLOGY STACK</a> · <a href="https://vivekally.github.io/ai-labs-briefing-2026/">THE STATE OF THE LABS</a> · <a href="https://vivekally.github.io/">INDEX</a><br>
+    A DATED SNAPSHOT, NOT A STANDING REFERENCE. INDEPENDENT — NOT AFFILIATED WITH ANY COMPANY NAMED.
+  </div>
+</footer>
+
+<script>
+(function () {
+  /* ── Theme ─────────────────────────────── */
+  var root = document.documentElement,
+      btn = document.getElementById('tbtn'),
+      glyph = document.getElementById('tglyph'),
+      label = document.getElementById('tlabel'),
+      modes = ['auto', 'light', 'dark'],
+      glyphs = { auto: '◐', light: '☀', dark: '☾' },
+      labels = { auto: 'Auto', light: 'Light', dark: 'Dark' },
+      mode = localStorage.getItem('fb-theme') || 'auto';
+
+  function apply(m) {
+    if (m === 'auto') root.removeAttribute('data-theme');
+    else root.setAttribute('data-theme', m);
+    glyph.textContent = glyphs[m];
+    label.textContent = labels[m];
+  }
+  apply(mode);
+  btn.addEventListener('click', function () {
+    mode = modes[(modes.indexOf(mode) + 1) % 3];
+    localStorage.setItem('fb-theme', mode);
+    apply(mode);
+  });
+
+  /* ── Tabs ──────────────────────────────── */
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.tab'));
+
+  function show(id, push) {
+    tabs.forEach(function (t) {
+      var on = t.id === id;
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+      document.getElementById(t.getAttribute('aria-controls')).classList.toggle('on', on);
+    });
+    if (push) {
+      var hash = '#' + id.replace('t-', '');
+      if (location.hash !== hash) history.pushState(null, '', hash);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }
+
+  tabs.forEach(function (t, i) {
+    t.addEventListener('click', function () { show(t.id, true); });
+    t.addEventListener('keydown', function (e) {
+      var d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+      if (!d) return;
+      e.preventDefault();
+      var next = tabs[(i + d + tabs.length) % tabs.length];
+      next.focus();
+      show(next.id, true);
+    });
+  });
+
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('[data-goto]');
+    if (!a) return;
+    e.preventDefault();
+    show(a.getAttribute('data-goto'), true);
+  });
+
+  function fromHash() {
+    var h = location.hash.replace('#', '');
+    var t = document.getElementById('t-' + h);
+    show(t ? t.id : 't-frontier', false);
+  }
+  window.addEventListener('popstate', fromHash);
+  if (location.hash) fromHash();
+})();
+</script>
+</body>
+</html>
