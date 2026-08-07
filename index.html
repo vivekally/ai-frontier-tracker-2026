@@ -314,9 +314,38 @@
     .strip .num { font-size: 20px; }
     figure { padding: 18px 14px 14px; }
   }
+
+  /* Suite bar — AI Intelligence · 2026 */
+  .suitebar {
+    display: flex; align-items: center; gap: 14px; height: 40px; padding: 0 24px;
+    background: var(--surface); border-bottom: 1px solid var(--line);
+    font-family: ui-monospace, "SF Mono", "Cascadia Code", Menlo, Consolas, monospace;
+    font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+    overflow-x: auto; scrollbar-width: none;
+  }
+  .suitebar::-webkit-scrollbar { display: none; }
+  .suitebar a { text-decoration: none; }
+  .sb-brand { color: var(--ink); font-weight: 600; white-space: nowrap; }
+  .sb-date { color: var(--muted); white-space: nowrap; }
+  .sb-tabs { display: flex; gap: 12px; margin-left: auto; }
+  .sb-tab { color: var(--muted); white-space: nowrap; }
+  .sb-tab:hover { color: var(--ink); }
+  .sb-tab.active { color: var(--accent); font-weight: 600; }
+  @media (max-width: 640px) { .suitebar { padding: 0 16px; } .sb-date { display: none; } }
 </style>
 </head>
 <body>
+
+<div class="suitebar">
+  <a class="sb-brand" href="https://vivekally.github.io/">AI Intelligence &middot; 2026</a>
+  <span class="sb-date">Refreshed Aug 7</span>
+  <div class="sb-tabs">
+    <a class="sb-tab" href="https://vivekally.github.io/ai-stack-report/">01 Stack Landscape</a>
+    <a class="sb-tab" href="https://vivekally.github.io/ai-labs-briefing-2026/">02 Labs Briefing</a>
+    <a class="sb-tab active" href="https://vivekally.github.io/ai-frontier-tracker-2026/">03 Frontier Board</a>
+    <a class="sb-tab" href="https://vivekally.github.io/ai-robotics-report-2026/">04 Robotics</a>
+  </div>
+</div>
 
 <!-- ══ MASTHEAD ══════════════════════════════ -->
 <header class="masthead">
@@ -1186,7 +1215,7 @@ git commit -am "ledger: <em>&lt;what changed&gt;</em>" &amp;&amp; git push</code
 <footer class="foot">
   <div class="shell">
     TRACKER 03 · THE FRONTIER BOARD · COMPILED 7 AUGUST 2026 · SINGLE-FILE HTML, NO EXTERNAL ASSETS, NO TRACKING<br>
-    COMPANION REPORTS: <a href="https://vivekally.github.io/ai-stack-report/">THE AI TECHNOLOGY STACK</a> · <a href="https://vivekally.github.io/ai-labs-briefing-2026/">THE STATE OF THE LABS</a> · <a href="https://vivekally.github.io/">INDEX</a><br>
+    COMPANION REPORTS: <a href="https://vivekally.github.io/ai-stack-report/">THE AI TECHNOLOGY STACK</a> · <a href="https://vivekally.github.io/ai-labs-briefing-2026/">THE STATE OF THE LABS</a> · <a href="https://vivekally.github.io/ai-robotics-report-2026/">TWO ROBOT INDUSTRIES</a> · <a href="https://vivekally.github.io/">INDEX</a><br>
     A DATED SNAPSHOT, NOT A STANDING REFERENCE. INDEPENDENT — NOT AFFILIATED WITH ANY COMPANY NAMED.
   </div>
 </footer>
