@@ -1,0 +1,193 @@
+company,month,date,amount,amount_usd_m,round,valuation,valuation_usd_m,sector,country,region,ai,frontier,investors,note
+xAI,2026-01,2026-01-06,$20.0B,20000,Series E,,,Frontier lab,US,US,True,False,Valor Equity Partners,Upsized round; proceeds directed at compute buildout.
+SkildAI,2026-01,2026-01-14,$1.4B,1400,Series C,$14B,14000,Robotics,US,US,True,False,SoftBank; Nvidia,
+humans&,2026-01,2026-01-20,$480M,480,Seed,$4.48B,4480,Frontier lab,US,US,True,True,SV Angel; Georges Harik; Nvidia; Jeff Bezos; GV,"One of the largest seed rounds in tech history. Multi-agent RL, memory, long-horizon planning."
+Baseten,2026-01,2026-01-23,$300M,300,Series E,,,AI infra,US,US,True,False,IVP; CapitalG,Raised again five months later at $1.5B.
+OpenEvidence,2026-01,2026-01-21,$250M,250,Series D,$12B,12000,Health AI,US,US,True,False,Thrive Global; DST Global,
+Decagon,2026-01,2026-01-28,$250M,250,Series D,$4.5B,4500,Agents/apps,US,US,True,False,Coatue; Index Ventures,
+Flapping Airplanes,2026-01,2026-01-28,$180M,180,Seed,,,Frontier lab,US,US,True,True,GV; Sequoia Capital; Index Ventures,Data efficiency in model training. A $180M seed against an unsolved problem.
+Arena,2026-01,2026-01-06,$150M,150,Series A,,,Agents/apps,US,US,True,False,Felicis; UC Investments,
+Inferact,2026-01,2026-01-22,$150M,150,Seed,$800M,800,AI infra,US,US,True,False,Andreessen Horowitz; Lightspeed,
+PaleBlueDot AI,2026-01,2026-01-28,$150M,150,Series B,,,Agents/apps,US,US,True,False,B Capital,
+LMArena,2026-01,2026-01,$150M,150,Series A,$1.7B,1700,Data/eval,US,US,True,False,,Aggregator-sourced; thinner sourcing than the rest of January.
+Deepgram,2026-01,2026-01-13,$130M,130,Series C,$1.3B,1300,Agents/apps,US,US,True,False,AVP,
+Poetiq,2026-01,2026-01,$45.8M,45.8,Seed,,,Frontier lab,US,US,True,True,,Below the $100M threshold. Included because the recursive self-improvement thesis matches Recursive's at a fraction of the price. Aggregator-sourced.
+Anthropic,2026-02,2026-02-12,$30.0B,30000,Series G,$380B,380000,Frontier lab,US,US,True,False,Accel; Microsoft; Nvidia; Sequoia Capital; Founders Fund; Coatue; GIC,Second-largest private venture deal in history at the time it closed.
+Waymo,2026-02,2026-02,$16.0B,16000,Series D,$126B,126000,Autonomy,US,US,True,False,Alphabet; Andreessen Horowitz; Temasek; Dragoneer; DST Global; Sequoia Capital; Silver Lake,Largest autonomy round ever raised.
+Wayve,2026-02,2026-02,$1.2B,1200,Series D,,,Autonomy,UK,Europe,True,False,Nvidia; Microsoft; SoftBank Vision Fund,
+World Labs,2026-02,2026-02,$1.0B,1000,Venture,,,World models,US,US,True,True,Andreessen Horowitz; Nvidia; Autodesk,Fei-Fei Li. $1.23B raised in total; Marble commercial launch in the same month; $200M Autodesk deal.
+Moonshot AI,2026-02,2026-02,$700M,700,Venture,,,Frontier lab,China,China,True,False,Alibaba Group; Tencent; Wucuan Capital,First of three 2026 raises.
+Neysa,2026-02,2026-02,$600M,600,Venture,,,AI infra,India,Asia (ex-China),True,False,Blackstone Group; Nexus Venture Partners,
+Apptronik,2026-02,2026-02,$520M,520,Series A,,,Robotics,US,US,True,False,Google; John Deere; Mercedes-Benz,
+ElevenLabs,2026-02,2026-02-04,$500M,500,Series D,$11B,11000,Agents/apps,UK,Europe,True,False,Sequoia Capital; Andreessen Horowitz; Nvidia,
+MatX,2026-02,2026-02,$500M,500,Series B,,,AI chips,US,US,True,False,Marvell; Spark Capital; Jane Street,
+Ayar Labs,2026-02,2026-02,$500M,500,Series E,,,AI chips,US,US,True,False,Nvidia; Sequoia Capital; AMD Ventures,Optical I/O.
+Inertia,2026-02,2026-02,$450M,450,Series A,,,Energy for AI,US,US,False,False,GV; Bessemer Venture Partners,Fusion energy.
+inKind,2026-02,2026-02,$450M,450,Venture,,,Other,US,US,False,False,Jenny Just; Matt Hulsizer,
+Vestwell,2026-02,2026-02,$385M,385,Series E,,,Other,US,US,False,False,Franklin Templeton; Blue Owl Capital,
+SambaNova,2026-02,2026-02,$350M,350,Series E,,,AI chips,US,US,True,False,Vista Equity Partners; Qatar Investment Authority,Raised $1.0B more in July.
+Axiom Space,2026-02,2026-02,$350M,350,Venture,,,Other,US,US,False,False,Qatar Investment Authority; 1789 Capital,
+Runway,2026-02,2026-02-10,$315M,315,Series E,$5.3B,5300,Agents/apps,US,US,True,False,General Atlantic; Nvidia; Adobe Ventures; Fidelity; Felicis,
+Temporal Technologies,2026-02,2026-02,$300M,300,Series D,$2.8B,2800,Dev tools,US,US,False,False,Andreessen Horowitz; Sequoia Capital,
+Skyryse,2026-02,2026-02,$300M,300,Series C,,,Autonomy,US,US,True,False,Qatar Investment Authority; Fidelity,
+Kavak,2026-02,2026-02,$300M,300,Series F,,,Other,Mexico,Other,False,False,Andreessen Horowitz; Lingotto,
+Spirit AI,2026-02,2026-02,¥2.0B (≈$282M),282,Series A,,,Robotics,China,China,True,False,Shunwei Capital; Fortune Venture Capital,Converted at ~7.1 CNY/USD.
+CesiumAstro,2026-02,2026-02,$270M,270,Series C,,,Other,US,US,False,False,Airbus Ventures; Alumni Ventures,
+Bedrock Robotics,2026-02,2026-02,$270M,270,Series B,,,Robotics,US,US,True,False,Eclipse; Valor Equity Partners; CapitalG,
+Axelera AI,2026-02,2026-02,$250M,250,Venture,,,AI chips,Netherlands,Europe,True,False,BlackRock; CDP Venture Capital,
+Positron,2026-02,2026-02,$230M,230,Series B,,,AI chips,US,US,True,False,Valor Equity Partners; DFJ Growth,
+Fundamental,2026-02,2026-02-05,$225M,225,Series A,,,Frontier lab,US,US,True,False,Valor Equity Partners; Headline; Oak HC/FT; Salesforce Ventures,Reported at $225M (AlleyWatch) and $255M (TechCrunch); lead investors also differ between the two.
+OLIX,2026-02,2026-02,$220M,220,Series A,,,AI chips,UK,Europe,True,False,LocalGlobe; Crane Venture Partners,Optical AI accelerators. Raised a $312M Series B in August.
+Lingxin Qiaoshou,2026-02,2026-02,¥1.5B (≈$211M),211,Series B,,,Robotics,China,China,True,False,Sequoia Capital; Ant Group,Embodied AI. Converted at ~7.1 CNY/USD.
+Talkiatry,2026-02,2026-02,$210M,210,Series D,,,Health AI,US,US,False,False,Andreessen Horowitz; Sofina,
+Whop,2026-02,2026-02,$200M,200,Venture,,,Other,US,US,False,False,Tether Ventures,
+Oxide Computer,2026-02,2026-02,$200M,200,Series C,,,AI infra,US,US,False,False,Eclipse; Jane Street Capital,
+Goodfire,2026-02,2026-02-05,$150M,150,Series B,$1.25B,1250,Frontier lab,US,US,True,False,B Capital,Interpretability and model debugging.
+Simile,2026-02,2026-02-12,$100M,100,Series A,,,Agents/apps,US,US,True,False,Index Ventures,
+OpenAI,2026-03,2026-03-31,$122.0B,122000,Growth,$852B,852000,Frontier lab,US,US,True,False,Amazon; Nvidia; SoftBank,"Largest private financing in history. First tranche $110B: Amazon $50B, Nvidia $30B, SoftBank $30B. Exceeded the entire previous quarterly record for global startup investment."
+Nscale,2026-03,2026-03,$2.0B,2000,Series C,$14.6B,14600,AI infra,UK,Europe,True,False,Nvidia; Point72; Citadel; Dell,
+Shield AI,2026-03,2026-03,$2.0B,2000,Series G,up to $18B,18000,Defence AI,US,US,True,False,Advent International; Blackstone; JPMorgan,Also reported as $1.5B at a $12.7B valuation on 25 March.
+Saronic,2026-03,2026-03,$1.8B,1800,Series D,,,Defence AI,US,US,True,False,Franklin Templeton; Andreessen Horowitz,Autonomous vessels. Also reported at $1.75B.
+AMI Labs,2026-03,2026-03-10,$1.03B,1030,Seed,$3.5B–$5B (reported range),3500,World models,France,Europe,True,True,Nvidia; Temasek; SoftBank Vision Fund 3; Accel,Yann LeCun. Largest seed in European history — held for 48 days until Ineffable. Valuation reported inconsistently.
+Earendil Labs,2026-03,2026-03,$787M,787,Venture,,,AI for science,US,US,False,False,Sanofi; DST Global,Protein therapeutics.
+WHOOP,2026-03,2026-03,$575M,575,Series G,,,Other,US,US,False,False,IVP; Qatar Investment Authority,
+Sierra Space,2026-03,2026-03,$550M,550,Series C,,,Other,US,US,False,False,General Atlantic; Coatue,
+Legora,2026-03,2026-03-11,$550M,550,Series D,$5.55B,5550,Agents/apps,Sweden,Europe,True,False,Insight Partners; Accel; General Catalyst,Legal AI. Largest European application-layer round of the year.
+Mind Robotics,2026-03,2026-03,$500M,500,Series A,,,Robotics,US,US,True,False,Andreessen Horowitz; Accel,Raised $400M more in May.
+Nexthop AI,2026-03,2026-03-14,$500M,500,Series B,,,AI infra,US,US,True,False,Lightspeed; Andreessen Horowitz; Kleiner Perkins,
+Quince,2026-03,2026-03,$500M,500,Series E,,,Other,US,US,False,False,DST Global; ICONIQ Capital,
+Rhoda AI,2026-03,2026-03-10,$450M,450,Series A,,,Agents/apps,US,US,True,False,Capricorn Investment Group,
+Replit,2026-03,2026-03,$400M,400,Series D,,,Dev tools,US,US,True,False,Andreessen Horowitz; Coatue,
+Rebellions,2026-03,2026-03,$400M,400,Venture,,,AI chips,South Korea,Asia (ex-China),True,False,Korea National Growth Fund,
+Cloaked,2026-03,2026-03,$375M,375,Series B,,,Security,US,US,False,False,General Catalyst; Index Ventures,
+Galaxy Bot,2026-03,2026-03,¥2.5B (≈$352M),352,Venture,,,Robotics,China,China,True,False,National AI Industry Fund,State-fund led. Converted at ~7.1 CNY/USD.
+EnerVenue,2026-03,2026-03,$300M,300,Series B,,,Energy for AI,US,US,False,False,Aramco Ventures,
+Vast,2026-03,2026-03,$300M,300,Series A,,,Other,US,US,False,False,Qatar Investment Authority,Space stations. Distinct from VAST Data.
+AIsphere,2026-03,2026-03,$300M,300,Series C,,,Agents/apps,China,China,True,False,Alibaba Group; CDH Investments,
+Halter,2026-03,2026-03-24,$220M,220,Series E,$2B,2000,Agents/apps,New Zealand,Asia (ex-China),True,False,Founders Fund,
+Unreasonable Labs,2026-03,2026-03-10,$13.5M,13.5,Seed,,,AI for science,US,US,True,True,Playground Global,"Below the $100M threshold. Same day as AMI Labs' $1.03B, at 1.3% of the size — included for scale contrast."
+Anthropic,2026-04,2026-04,$15.0B,15000,Venture,,,Frontier lab,US,US,True,False,,27% of all April global venture funding. Second of three 2026 raises.
+Project Prometheus,2026-04,2026-04,$10.0B,10000,Late-stage venture,,,Frontier lab,US,US,True,False,ARCH Venture Partners; BlackRock; DST Global; JPMorgan Chase,"Bezos-backed industrial AI. 48.1% of all US venture capital deployed in April, and 18% of global. Separately reported as a $12B Series B at a $41B valuation dated June."
+Ineffable Intelligence,2026-04,2026-04-27,$1.1B,1100,Seed,$5.1B,5100,World models,UK,Europe,True,True,Sequoia Capital; Lightspeed; Nvidia; DST Global; Index Ventures; Google; UK Sovereign AI Fund,"David Silver. Largest seed round in European history. No product, no revenue; first model benchmarks promised for late 2026."
+Recursive,2026-04,2026-04,$650M,650,Series A,$4B pre-money,4000,Frontier lab,UK,Europe,True,True,Nvidia; GV; Karatage,"Richard Socher and Tim Rocktäschel. Raised four months after founding, before public launch. Earlier reporting had it at ~$500M and US-based; the round was described as oversubscribed to as much as $1B."
+Slate Auto,2026-04,2026-04,$650M,650,Series C,,,Other,US,US,False,False,TWG Global,
+True Anomaly,2026-04,2026-04,$600M,600,Venture,,,Defence AI,US,US,True,False,,
+VAST Data,2026-04,2026-04,$500M,500,Series F,,,AI infra,US,US,True,False,Nvidia; Access Industries; Fidelity,
+TARS,2026-04,2026-04,¥3.5B (≈$493M),493,Seed,,,Robotics,China,China,True,False,Qiming Venture Partners; HSG; Meituan,Largest Chinese AI seed round of the year. Converted at ~7.1 CNY/USD.
+Vulcan Elements,2026-04,2026-04,$431M,431,Venture,,,Other,US,US,False,False,,
+Plata,2026-04,2026-04,$405M,405,Series C,,,Other,Mexico,Other,False,False,BTG Pactual; Qatar Investment Authority,
+SiFive,2026-04,2026-04,$400M,400,Series G,,,AI chips,US,US,True,False,Nvidia; Apollo; Point72,
+Blue Energy,2026-04,2026-04,$380M,380,Venture,,,Energy for AI,Denmark,Europe,False,False,Engine Ventures; At One Ventures,
+Valar Atomics,2026-04,2026-04,$340M,340,Series B,,,Energy for AI,US,US,False,False,Palmer Luckey; Shyam Sankar,"A second, larger Series B of $1.0B was reported on 4 August. Whether these are tranches of one round or two events is unclear."
+Volant Aerotech,2026-04,2026-04,$300M,300,Series C,,,Other,China,China,False,False,HSG; Legend Capital,
+X Square,2026-04,2026-04,¥2.0B (≈$282M),282,Series B,,,Robotics,China,China,True,False,HSG; Xiaomi,
+Shengshu Technology,2026-04,2026-04,¥2.0B (≈$282M),282,Series B,,,Agents/apps,China,China,True,False,Baidu Ventures; Alibaba Cloud,Generative video.
+Galaxea AI,2026-04,2026-04,¥2.0B (≈$282M),282,Series B,,,Robotics,China,China,True,False,Baidu Ventures; IDG Capital,Humanoid robotics.
+KreditBee,2026-04,2026-04,$220M,220,Series E,,,Other,India,Asia (ex-China),False,False,Advent International; MUFG Bank,
+Robot Era,2026-04,2026-04,$200M,200,Venture,,,Robotics,China,China,True,False,HSG; Samsung Electronics; CDH Investments; IDG Capital; Alibaba Group,Brings total equity funding to $611.4M.
+Hermeus,2026-04,2026-04,$200M,200,Series C,,,Other,US,US,False,False,Khosla Ventures; Founders Fund,
+Flock Safety,2026-04,2026-04,$200M,200,Series I,,,Security,US,US,True,False,Andreessen Horowitz; Matrix,Brings total equity funding to $1.2B.
+Anthropic,2026-05,2026-05,$50.0B,50000,Series H,$965B,965000,Frontier lab,US,US,True,False,Sequoia Capital; Google; Amazon; Microsoft; Nvidia; Altimeter; Dragoneer; Greenoaks,54% of all global venture funding in May. Repriced from $380B in February — 154% in 15 weeks. Largest venture round in recorded history.
+Anduril Industries,2026-05,2026-05,$5.0B,5000,Series H,,,Defence AI,US,US,True,False,Andreessen Horowitz; Founders Fund; Lux Capital,
+StepFun,2026-05,2026-05,$2.0B+,2000,Venture,,,Frontier lab,China,China,True,False,,
+Moonshot AI,2026-05,2026-05,$2.0B+,2000,Venture,,,Frontier lab,China,China,True,False,,Second of three 2026 raises.
+Isomorphic Labs,2026-05,2026-05,$2.0B+,2000,Series B,,,AI for science,UK,Europe,True,True,Google; Nvidia,DeepMind spinout. The AlphaFold franchise as a drug-discovery company.
+Cognition,2026-05,2026-05,$1.0B,1000,Series D,,,Dev tools,US,US,True,False,General Catalyst; Founders Fund; Khosla Ventures,
+Sierra,2026-05,2026-05,$950M,950,Series E,,,Agents/apps,US,US,True,False,Sequoia Capital; Benchmark; GV,
+Hark,2026-05,2026-05,$700M,700,Series A,,,Frontier lab,US,US,True,True,Nvidia; Salesforce Ventures; Brookfield,Brett Adcock. Largest Series A in AlleyWatch's US dataset. Personal intelligence models and computer-use agents.
+Periodic Labs,2026-05,2026-05,$500M,500,Series A,,,AI for science,US,US,True,True,,AI scientist for materials and physical sciences.
+Mind Robotics,2026-05,2026-05,$400M,400,Venture,,,Robotics,US,US,True,False,Andreessen Horowitz; Accel; Kleiner Perkins,Second round in three months.
+Modal Labs,2026-05,2026-05,$355M,355,Series C,,,AI infra,US,US,True,False,General Catalyst; Accel; Menlo Ventures,
+Decart,2026-05,2026-05,$300M,300,Venture,,,World models,Israel,Other,True,False,Nvidia; Sequoia Capital; Radical Ventures,Real-time generative world simulation for gaming.
+Astranis,2026-05,2026-05,$300M,300,Series E,,,Other,US,US,False,False,Andreessen Horowitz; Franklin Templeton; BlackRock,
+Amca,2026-05,2026-05,$300M,300,Series B,,,Other,US,US,False,False,Andreessen Horowitz; Lightspeed,
+Cowboy Space,2026-05,2026-05,$275M,275,Series B,,,AI infra,US,US,True,False,Andreessen Horowitz; Index Ventures; NEA,Orbital AI infrastructure.
+Exa,2026-05,2026-05,$250M,250,Series C,,,Data/eval,US,US,True,False,Andreessen Horowitz; QuantumLight,Search APIs for agents.
+Stord,2026-05,2026-05,$250M,250,Series F,,,Other,US,US,False,False,Franklin Templeton; Founders Fund; Kleiner Perkins,
+Armada,2026-05,2026-05,$230M,230,Series B,,,AI infra,US,US,True,False,Founders Fund; BlackRock; Lux Capital,Edge compute.
+Blitzy,2026-05,2026-05,$200M,200,Series A,,,Dev tools,US,US,True,False,Battery Ventures; Northzone; PSG,
+Mercury,2026-05,2026-05,$200M,200,Series D,,,Other,US,US,False,False,Andreessen Horowitz; Sequoia Capital; TCV,
+RADAR,2026-05,2026-05,$170M,170,Series B,,,Agents/apps,US,US,True,False,Nimble Partners; Gideon Strategic Partners,
+Farther,2026-05,2026-05,$150M,150,Series D,,,Other,US,US,False,False,General Atlantic,
+Vi Labs,2026-05,2026-05,$145.7M,145.7,Venture,,,Health AI,US,US,True,False,General Atlantic; Revelstoke Capital Partners,
+Panthalassa,2026-05,2026-05,$140M,140,Series B,,,Energy for AI,US,US,False,False,Founders Fund; Lowercarbon Capital; John Doerr,
+Exaforce,2026-05,2026-05,$125M,125,Series B,,,Security,US,US,True,False,Peak XV Partners; Khosla Ventures; Mayfield,
+Reserv,2026-05,2026-05,$125M,125,Series C,,,Other,US,US,True,False,Bain Capital Ventures; Flourish Ventures; KKR,
+CREATE Medicines,2026-05,2026-05,$122M,122,Series B,,,AI for science,US,US,False,False,Alexandria Venture Investments; ARCH Venture Partners,
+OpenRouter,2026-05,2026-05,$113M,113,Series B,,,AI infra,US,US,True,False,Andreessen Horowitz; Menlo Ventures; ServiceNow Ventures,
+SendCutSend,2026-05,2026-05,$110M,110,Series A,,,Other,US,US,False,False,Sequoia Capital; Paradigm; Patrick Collison,
+Deep Infra,2026-05,2026-05,$107M,107,Series B,,,AI infra,US,US,True,False,Nvidia; Felicis; Samsung NEXT,
+Corgi Insurance,2026-05,2026-05,$106M,106,Series B,,,Other,US,US,True,False,TCV; Kindred Ventures; Repeat Ventures,
+Core Automation,2026-05,2026-05,$100M,100,Venture,$1B,1000,Frontier lab,US,US,True,True,Nvidia; Spark Capital; Accel,"Jerry Tworek, ex-OpenAI VP of Research. Reported to be raising $300–500M at ~$4B six weeks later."
+HavocAI,2026-05,2026-05,$100M,100,Series A,,,Defence AI,US,US,True,False,Lockheed Martin; B Capital; Scout Ventures,
+Nourish,2026-05,2026-05,$100M,100,Series C,,,Health AI,US,US,False,False,Menlo Ventures; Index Ventures; Thrive Capital,
+Thea Energy,2026-05,2026-05,$100M,100,Series B,,,Energy for AI,US,US,False,False,Alumni Ventures; Hitachi Ventures; Lowercarbon Capital,
+Garner Health,2026-05,2026-05,$100M,100,Series E,,,Health AI,US,US,False,False,Sequoia Capital; Founders Fund; Thrive Capital,
+Project Prometheus,2026-06,2026-06-11,$12.0B,12000,Series B (disputed),$41B,41000,Frontier lab,US,US,True,False,,"DISPUTED: reported separately from the $10B April round. Whether these are the same raise reported twice, or two events, is unresolved — see the conflicts log. Both rows are kept so the disagreement stays visible; totals therefore double-count Prometheus."
+DeepSeek,2026-06,2026-06,¥50.0B (≈$7.0B),7042,Series A,,,Frontier lab,China,China,True,False,IDG Capital; Tencent; NetEase,Largest disclosed round of the month globally and the largest Chinese AI round on record. Converted at ~7.1 CNY/USD.
+DayOne,2026-06,2026-06-05,$2.5B,2500,Series C,$20B,20000,AI infra,Singapore,Asia (ex-China),True,False,Coatue; Hillhouse Investment,Data centres.
+Baseten,2026-06,2026-06-22,$1.5B,1500,Series F,,,AI infra,US,US,True,False,Nvidia; Wellington Management; Spark Capital; Altimeter Capital,"5× the January round, five months later."
+NEURA Robotics,2026-06,2026-06,$1.4B,1400,Series C,,,Robotics,Germany,Europe,True,False,Amazon; Nvidia; Bosch,Largest European robotics round of the year.
+AppsFlyer,2026-06,2026-06,$1.0B,1000,Series E,,,Other,Israel,Other,False,False,Google; Meta; Moloco,
+Together AI,2026-06,2026-06-30,$800M,800,Series C,$8.3B,8300,AI infra,US,US,True,False,Aramco Ventures,Sovereign-wealth lead on a US inference company.
+Ramp,2026-06,2026-06,$750M,750,Series F,,,Other,US,US,True,False,Lightspeed; General Catalyst; Sequoia Capital,
+AI2 Robotics,2026-06,2026-06,¥5.0B (≈$704M),704,Series C,,,Robotics,China,China,True,False,Baidu Ventures; Fortune VC; GSR United,
+Groq,2026-06,2026-06,$650M,650,Venture,,,AI chips,US,US,True,False,Disruptive; Infinitum,"With Baseten, over 11% of US venture activity that month went to inference."
+Cyera,2026-06,2026-06,$600M,600,Series G,,,Security,Israel,Other,True,False,Accel; Temasek; Sequoia Capital,
+Cowarobot,2026-06,2026-06,$600M,600,Venture,,,Robotics,China,China,True,False,Asia Investment Capital; SBCVC,
+STARK,2026-06,2026-06,€500M (≈$545M),545,Venture,,,Defence AI,Germany,Europe,True,False,Sequoia Capital; Founders Fund; Advent International,Military AI and drones. Converted at ~1.09 USD/EUR.
+Alan,2026-06,2026-06-25,€480M (≈$523M),523,Series G,€5.5B,5995,Health AI,France,Europe,True,False,Index Ventures; Prosus; Teachers' Venture Growth,
+Iceye,2026-06,2026-06,$520M,520,Venture,,,Other,Finland,Europe,False,False,,
+Impulse Space,2026-06,2026-06,$500M,500,Series D,,,Other,US,US,False,False,Founders Fund; Lux Capital; Banner Ventures,
+Supabase,2026-06,2026-06,$500M,500,Series F,,,Dev tools,US,US,False,False,Lightspeed; Accel; Stripe,
+Flourish,2026-06,2026-06,$500M,500,Series A,,,Agents/apps,US,US,True,False,GV; Jeff Bezos; Lux Capital,
+CRED,2026-06,2026-06,$469M,469,Series H,,,Other,India,Asia (ex-China),False,False,Meta,
+Helion Energy,2026-06,2026-06,$465M,465,Series G,,,Energy for AI,US,US,False,False,Lightspeed; SoftBank Vision Fund,
+CuspAI,2026-06,2026-06,$450M,450,Series B,,,AI for science,UK,Europe,True,True,Temasek; Lightspeed; Samsung,Materials discovery. Most commercially grounded entry in the AI-for-science cluster.
+Origin Quantum,2026-06,2026-06,¥3.0B (≈$423M),423,Venture,,,Other,China,China,False,False,Shenzhen Capital; CAS Star,Quantum computing.
+DriveNets,2026-06,2026-06,$410M,410,Series D,,,AI infra,Israel,Other,True,False,AMD; Bessemer Venture Partners; Red Dot Capital,
+Generalist AI,2026-06,2026-06,$400M,400,Series B,,,Robotics,US,US,True,False,Nvidia; Spark Capital; Union Square Ventures,Robot foundation models.
+Suno,2026-06,2026-06,$400M,400,Series D,,,Agents/apps,US,US,True,False,Lightspeed; Menlo Ventures,
+Ionic Digital,2026-06,2026-06,$400M,400,Venture,,,AI infra,US,US,True,False,Citadel; Oaktree Capital,Data centres.
+NinjaOne,2026-06,2026-06,$400M,400,Series C extension,,,Security,US,US,False,False,Sequoia Capital; Wellington Management,
+General Intuition,2026-06,2026-06-25,$320M,320,Series A,$2.3B,2300,World models,US,US,True,True,Khosla Ventures,$454M raised in total. Trains action foundation models on action-labelled gameplay from Medal's 17M monthly users. Frequently misreported as a '$2.3B Series B' — that is the valuation.
+Odyssey,2026-06,2026-06-17,$310M,310,Series B,$1.45B,1450,World models,US,US,True,True,Natural Capital; Amazon; AMD Ventures; GV; EQT; IQT,"Existing backers include Jeff Dean, Elad Gil, Garry Tan and Kyle Vogt. AWS is now preferred cloud."
+Peregrine Technologies,2026-06,2026-06-23,$250M,250,Series D,$6.8B,6800,Agents/apps,US,US,True,False,Fifth Down Capital,
+Mirendil,2026-06,2026-06-25,$200M,200,Seed,$1B,1000,Frontier lab,US,US,True,True,Andreessen Horowitz; Kleiner Perkins; Nvidia,"Ex-Anthropic, ~20 people. Signed a $100M+ multi-year Google Cloud deal on 6 August — roughly half the round committed to compute."
+LeapXpert,2026-06,2026-06-30,$180M,180,Growth,,,Security,US,US,True,False,Riverwood Capital,
+Assort Health,2026-06,2026-06-25,$120M,120,Series C,$1.2B,1200,Health AI,US,US,True,False,Menlo Ventures,
+Taktile,2026-06,2026-06-29,$110M,110,Series C,,,Agents/apps,Germany,Europe,True,False,Goldman Sachs Growth Equity,
+Trase,2026-06,2026-06-25,$107M,107,Seed,,,AI for science,US,US,True,False,ARCH Venture Partners,
+Blue Origin,2026-07,2026-07,$10.0B,10000,Venture,,,Other,US,US,False,False,,"Largest round of the month. Not AI, but it sets the scale."
+Safe Superintelligence,2026-07,2026-07,$5.0B,5000,Strategic,,,Frontier lab,US,US,True,True,Nvidia,"Largest pure-AI deal of the month, from a single strategic investor, into a lab with no product and no stated timeline."
+Moonshot AI,2026-07,2026-07,$3.5B,3500,Venture,,,Frontier lab,China,China,True,False,,"Third raise of 2026: $700M in February, $2B+ in May, $3.5B in July."
+Kling AI,2026-07,2026-07,~$2.8B,2800,Growth,,,Agents/apps,China,China,True,False,Alibaba; Tencent; Baidu; BlueFive Capital,Video generation.
+Helsing,2026-07,2026-07,$1.8B,1800,Series E,,,Defence AI,Germany,Europe,True,False,Dragoneer; Lightspeed; ICONIQ,Largest European AI round of the year.
+Joulent,2026-07,2026-07,$1.75B,1750,Strategic,,,Energy for AI,US,US,False,False,National Grid Ventures,"Largest US round of the month. Energy, not models."
+Atoms,2026-07,2026-07,$1.7B,1700,Venture,,,Robotics,US,US,True,False,Andreessen Horowitz; Bain Capital; Uber,Travis Kalanick. Physical AI.
+Fireworks AI,2026-07,2026-07,$1.505B,1505,Series D,$17.5B,17500,AI infra,US,US,True,False,Atreides Management; Index Ventures; TCV,
+Commonwealth Fusion Systems,2026-07,2026-07,$1.0B,1000,Private equity,,,Energy for AI,US,US,False,False,,"Institutional, pension and sovereign funds."
+Keyfactor,2026-07,2026-07,$1.0B+,1000,Growth,,,Security,US,US,False,False,Summit Partners,
+SambaNova,2026-07,2026-07,$1.0B,1000,Series F,,,AI chips,US,US,True,False,General Atlantic,"Second raise of 2026, 3× the February round."
+Neko Health,2026-07,2026-07,$700M,700,Series C,,,Health AI,Sweden,Europe,True,False,Lightspeed; O.G. Venture Partners,
+Wonder,2026-07,2026-07,$650M,650,Series D,$9B pre-money,9000,Other,US,US,False,False,,
+Antora Energy,2026-07,2026-07,$550M,550,Venture,,,Energy for AI,US,US,False,False,,
+Chai Discovery,2026-07,2026-07,$400M,400,Series C,$3.8B,3800,AI for science,US,US,True,True,Index Ventures; Sequoia Capital; Dimension; Kleiner Perkins,Open-weight molecular structure models.
+Walden Robotics,2026-07,2026-07,$300M,300,Launch funding,$1.1B,1100,Robotics,US,US,True,False,Toyota; Deviation Capital,Unicorn at launch.
+CAIS,2026-07,2026-07,$170M,170,Venture,,,Other,US,US,False,False,,
+Emergent,2026-07,2026-07,$130M,130,Series C,,,Dev tools,US,US,True,False,,
+Brinc,2026-07,2026-07,$125M,125,Follow-on,,,Robotics,US,US,True,False,Motorola Solutions; Index Ventures,
+Gauntlet,2026-07,2026-07,$125M,125,Venture,,,Other,US,US,False,False,,
+Spectro Cloud,2026-07,2026-07,$100M+,100,Series D,,,AI infra,US,US,True,False,Goldman Sachs Alternatives,
+Twelve Labs,2026-07,2026-07,$100M,100,Series B,,,Data/eval,US,US,True,False,New Enterprise Associates; Naver Ventures,Video understanding.
+TerraFirma,2026-07,2026-07,$100M,100,Venture,,,Other,US,US,False,False,,
+Skyfall AI,2026-07,2026-07-20,Undisclosed,,Venture,,,World models,Canada,Other,True,True,Fidelity Management and Research; Inovia Capital; Touring Capital; M13; NextView Ventures; Garage Capital,Out of stealth. Enterprise world models. Announced it will acquire a small B2B SaaS or e-commerce business for up to $1M and run it almost entirely with AI. Amount and valuation not public.
+Valar Atomics,2026-08,2026-08-04,$1.0B,1000,Series B,$6B,6000,Energy for AI,US,US,False,False,Sequoia Capital,Total raised $1.2B including a credit facility. A $340M Series B was reported in April.
+Base Power,2026-08,2026-08-04,$1.0B,1000,Series D,$13B,13000,Energy for AI,US,US,False,False,Ribbit Capital; Addition; Valor Equity Partners; JPMorgan,~$2.5B raised in total. Two billion-dollar energy rounds on the same day.
+OLIX Computing,2026-08,2026-08,$312M,312,Series B,$3.3B,3300,AI chips,UK,Europe,True,False,,Photonic AI inference chips. Second round of the year after a $220M Series A in February.
+HappyRobot,2026-08,2026-08-04,$150M,150,Series C,$1.2B,1200,Agents/apps,US,US,True,False,Prysm Capital; Eurazeo,Supply-chain agents.
+Zenity,2026-08,2026-08-04,$125M,125,Series C,,,Security,Israel,Other,True,False,Norwest Venture Partners; Qumra Capital; SoftBank Vision Fund 2,AI agent governance.
+Onyx,2026-08,2026-08,$113M,113,Series B,$640M,640,Security,Israel,Other,True,False,,Secure enterprise agent deployment.
+Mirendil,2026-08,2026-08-06,$100M+ (compute deal),100,Cloud commitment,,,Frontier lab,US,US,True,True,Google Cloud,Not equity. A multi-year Google Cloud commitment worth roughly half the June seed round.
+Convex,2026-08,2026-08-04,$57M,57,Series B,,,Dev tools,US,US,True,False,Insight Partners,
+Discovery Loop,2026-08,2026-08-05,Undisclosed,,Founding,,,Frontier lab,US,US,True,True,Google; Radical Ventures; Khosla Ventures,Jeff Dean and Sanjay Ghemawat leave Google after 27 years with Oriol Vinyals and Quoc Le. Public benefit corporation; Google is founding investor and cloud partner.
